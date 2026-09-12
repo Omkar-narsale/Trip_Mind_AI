@@ -7,6 +7,7 @@ import ExploreSection from './results/ExploreSection';
 import FoodSection from './results/FoodSection';
 import TransportSection from './results/TransportSection';
 import ItinerarySection from './results/ItinerarySection';
+import PackingSection from './results/PackingSection';
 import MapSection from './results/MapSection';
 import DeveloperModeModal from './results/DeveloperModeModal';
 import PrintBrochureView from './results/PrintBrochureView';
@@ -118,6 +119,18 @@ export default function TripResultsView({
             weatherContext={weatherContext}
             destination={destination}
             topHotel={topHotel}
+          />
+        )}
+
+        {activeTab === 'packing' && (
+          <PackingSection
+            destination={destination}
+            departureDate={departureDate}
+            returnDate={returnDate}
+            weatherContext={weatherContext}
+            itineraryData={itineraryData}
+            travelers={travelers}
+            styles={styles}
           />
         )}
 

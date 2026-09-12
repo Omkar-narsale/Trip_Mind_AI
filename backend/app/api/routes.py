@@ -285,6 +285,8 @@ async def get_saved_trip_by_id(session_id: str):
 
 from app.schemas.copilot import TripChatRequest, TripChatResponse
 from app.services.copilot_service import copilot_service
+from app.schemas.packing import PackingRequest, PackingResponse
+from app.services.packing_service import packing_service
 
 @router.post(
     "/chat",
@@ -301,5 +303,22 @@ async def chat_with_copilot(req: TripChatRequest):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e)
+        )
+
+@router.post(
+    "/packing",
+    response_model=PackingResponse,
+    status_code=status.HTTP_200_OK,
+    summary="AI Weather-Aware Packing & Travel Readiness Checklist",
+    description="Generates dynamic, weather-aware packing items categorized with advisories."
+)
+async def get_packing_checklist(req: PackingRequest):
+    try:
+        return await packing_service.generate_packing_checklist(req)
+    except Exception as e:
+        logger.error(f"Error generating packing checklist: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Packing checklist generation failed: {str(e)}"
         )
 
