@@ -2,22 +2,23 @@
 
 # 🌍 TripMind AI
 
-### Autonomous Agentic AI Travel Planning & Experience Discovery Platform
+### Autonomous Agentic Travel Planning, Real-Time Intelligence & In-Trip Concierge Platform
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![LangGraph](https://img.shields.io/badge/LangGraph-Agentic%20Workflows-blue?style=for-the-badge&logo=langchain&logoColor=white)](https://langchain-ai.github.io/langgraph/)
 [![Groq](https://img.shields.io/badge/Groq%20Cloud-Ultra--Fast%20LLM-f55036?style=for-the-badge&logo=fastapi&logoColor=white)](https://groq.com)
+[![Supabase](https://img.shields.io/badge/Supabase-Database%20%26%20Storage-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
 [![React](https://img.shields.io/badge/React%2018-Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-Modern%20Dark%20Theme-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-Overpass%20API-7EBC6F?style=for-the-badge&logo=openstreetmap&logoColor=white)](https://www.openstreetmap.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-Modern%20Design%20System-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-Live%20Geodata-7EBC6F?style=for-the-badge&logo=openstreetmap&logoColor=white)](https://www.openstreetmap.org)
 [![Open-Meteo](https://img.shields.io/badge/Open--Meteo-Live%20Weather-orange?style=for-the-badge)](https://open-meteo.com)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
 
 <p align="center">
-  <b>TripMind AI</b> is an autonomous, agentic travel planning engine built with <b>LangGraph</b>, <b>Groq LLM</b>, <b>Open-Meteo</b>, and <b>OpenStreetMap</b>. It transforms natural travel intents into dependency-sequenced planning graphs, evaluates live meteorological data, discovers verified geographical points of interest, and personalizes recommendations with strict zero-hallucination guarantees.
+  <b>TripMind AI</b> is an autonomous travel planning engine built with <b>LangGraph</b>, <b>Groq LLMs</b>, <b>OpenStreetMap</b>, <b>Open-Meteo</b>, and <b>Supabase</b>. It decomposes natural travel requests into dependency-sequenced execution graphs, discovers real accommodations, attractions, and authentic dining spots with 3-tier grounding resilience, computes intelligent route corridors, generates sequenced daily itineraries, provides calendar sync & printable brochures, and offers a real-time AI Trip Co-Pilot concierge.
 </p>
 
-[Key Features](#-key-features) • [Architecture](#-system-architecture) • [Phases Roadmap](#-phases-roadmap) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Testing](#-test-suite)
+[Key Features](#-key-features) • [System Architecture](#-system-architecture) • [Results Dashboard](#-interactive-results-experience) • [Phases & Roadmap](#-completed-phases--architecture) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Export & Co-Pilot](#-calendar-sync-pdf-export--ai-co-pilot)
 
 </div>
 
@@ -25,12 +26,16 @@
 
 ## 🚀 Key Features
 
-* **🧠 LangGraph Autonomous Task Decomposition**: Dynamically breaks down trips into dependency-ordered graphs factoring in duration, budget level, traveler dynamics (solo, couples, families with kids, seniors), and natural language constraints.
-* **☀️ Live Meteorological Intelligence (Open-Meteo)**: Real-time 16-day daily forecasts (temperature ranges, precipitation probability, weather conditions, wind speeds) without fabricating fake forecasts for dates beyond meteorological limits.
-* **📍 Verified Places & POIs Discovery (OpenStreetMap + Overpass API)**: Discovers real historical landmarks, museums, scenic viewpoints, nature parks, and cultural venues using open geospatial queries.
-* **🎯 Preference & Weather-Aware Attraction Ranking**: Groq LLM evaluates and scores real places ($0-100\%$) based on user style, pace, and active weather context (e.g. prioritizing indoor venues during rain) with a strict anti-hallucination policy.
-* **✨ Modern Dark Travel-AI UI**: Crafted with a dark palette (`#060911`, `#0a0f1d`), glassmorphism, Framer Motion transitions, interactive flight route hero, and expandable recommendation cards.
-* **🛡️ Bulletproof Resilience & Graceful Fallbacks**: Multi-endpoint Overpass QL execution with Nominatim POI secondary resilience and heuristic tag ranking fallback if LLM or network limits occur.
+* **🧠 LangGraph Autonomous Task Decomposition**: Dynamically breaks down trips into dependency-ordered graphs factoring in duration, budget tier, traveler dynamics (solo, couples, families with kids, seniors), and natural language constraints.
+* **🏨 Real Accommodations & Scoring (OpenStreetMap + Groq)**: Discovers genuine hotels, boutique resorts, and heritage stays with live coordinates, external OpenStreetMap links, and personalized suitability scoring.
+* **📍 Verified Sights & POI Discovery**: Discovers cultural monuments, museums, viewpoints, and nature spots using Overpass API with secondary Nominatim and Groq LLM real-world fallback layers.
+* **🍲 Authentic Local Dining & Culinary Intelligence**: Pinpoints traditional restaurants, cafes, and thali halls with cuisine tags, dietary compatibility, and distance calculations from your lodging.
+* **🚗 Route Optimization & Transit Guidance**: Automatically clusters nearby attractions using Haversine distance, partitioning days into geographic hubs with recommended transit modes (walk, cab, taxi, private vehicle) and actionable transit tips.
+* **📅 Complete Day-by-Day Itineraries**: Synthesizes structured schedules with realistic morning, afternoon, and evening activity slots, dining bookings, and weather adjustments.
+* **📆 One-Click Calendar Sync (`.ics` & Google Calendar)**: Generates universal RFC-5545 `.ics` files compatible with Apple, Google, and Outlook calendars, plus individual `+ Cal` quick-add buttons.
+* **📄 Print-Ready Luxury PDF Travel Brochure**: Dedicated publication-grade print view (`window.print()` / Save as PDF) featuring trip parameters, hotel details, and daily schedules.
+* **💬 Floating AI Trip Co-Pilot (Concierge Chat)**: In-page interactive assistant grounded in the traveler's active destination, hotel, weather, and schedule, with dynamic follow-up suggestion chips.
+* **💾 Supabase Session Persistence**: Automatically stores trip requests, profiles, weather forecasts, stays, attractions, transit routes, and itineraries for instant recall.
 
 ---
 
@@ -39,51 +44,97 @@
 ```mermaid
 flowchart TB
     subgraph Frontend["Modern React + Vite + Tailwind UI"]
-        UI_Form["Trip Planning Form & Natural Desires"]
-        UI_Hero["TripHero Flight Route & Metadata Bar"]
-        UI_Intel["TripIntelligence Chips & Badges"]
-        UI_Weather["WeatherIntelligence & 16-Day Forecast"]
-        UI_Places["DestinationDiscovery POIs & AI Matches"]
-        UI_Timeline["PlanningTimeline & Agent Activity Feed"]
+        UI_Search["Trip Search Widget & Destination Input"]
+        UI_Results["7-Tab Results Dashboard (Overview, Stay, Explore, Food, Transport, Itinerary, Map)"]
+        UI_Export["Calendar Sync (.ics / Google Cal) & PDF Travel Brochure"]
+        UI_Copilot["Floating AI Trip Co-Pilot Concierge Drawer"]
     end
 
-    subgraph Backend["FastAPI + Python 3.13"]
-        API_Endpoints["/api/v1/profile & /api/v1/plan"]
+    subgraph Backend["FastAPI + Python 3.13 Asynchronous Engine"]
+        API_Endpoints["/api/trip, /api/plan, /api/chat, /api/trips/{id}"]
         
-        subgraph LangGraph["LangGraph Autonomous Agent Workflow"]
-            InitNode["1. Initialize State"]
-            GenTasksNode["2. Generate Dynamic Tasks (ChatGroq)"]
+        subgraph LangGraph["LangGraph Autonomous Planning Workflow"]
+            InitNode["1. Initialize State & Context"]
+            GenTasksNode["2. Decompose Strategic Tasks (Groq LLM)"]
             ValTasksNode["3. Validate Acyclic Dependencies"]
-            ExecNode["4. Execute Tasks & Live Tool Routing"]
-            FinalNode["5. Finalize State & Summarize"]
+            ExecNode["4. Execute Live Geospatial Tools & Synthesize"]
+            FinalNode["5. Finalize State & Persist"]
         end
 
-        subgraph Tools["Modular Tool Ecosystem"]
-            WeatherTool["Weather Tool (Open-Meteo API)"]
-            PlacesTool["Places Tool (Nominatim + Overpass API)"]
-            RankerService["Attraction Ranker (Groq LLM + Heuristics)"]
+        subgraph ToolEcosystem["3-Tier Grounding & Tool Ecosystem"]
+            WeatherTool["Open-Meteo Weather API"]
+            HotelTool["Overpass / Nominatim / Groq Accommodation Discovery"]
+            PlacesTool["Overpass / Nominatim / Groq Places & Attraction Discovery"]
+            FoodService["Overpass / Nominatim / Groq Local Dining Discovery"]
+            TransitService["Spatial Clustering & Haversine Route Optimizer"]
+            ItineraryService["Day-by-Day Activity & Transit Sequencer"]
+            CopilotService["Groq LLM Grounded Concierge Service"]
+        end
+
+        subgraph Database["Supabase PostgreSQL Cloud Persistence"]
+            DB_Sessions["planning_sessions"]
+            DB_Profiles["trip_profiles & trip_requests"]
+            DB_Results["hotel_results, places_results, food_results, transportation_results, itinerary_results"]
         end
     end
 
-    UI_Form --> API_Endpoints
+    UI_Search --> API_Endpoints
     API_Endpoints --> LangGraph
     LangGraph --> InitNode --> GenTasksNode --> ValTasksNode --> ExecNode
     
-    ExecNode -- "TaskType.WEATHER" --> WeatherTool
-    ExecNode -- "TaskType.ATTRACTION" --> PlacesTool
-    PlacesTool --> RankerService
+    ExecNode --> WeatherTool
+    ExecNode --> HotelTool
+    ExecNode --> PlacesTool
+    ExecNode --> FoodService
+    ExecNode --> TransitService
+    ExecNode --> ItineraryService
     
-    ExecNode --> FinalNode --> API_Endpoints
-    API_Endpoints --> UI_Hero
-    API_Endpoints --> UI_Intel
-    API_Endpoints --> UI_Weather
-    API_Endpoints --> UI_Places
-    API_Endpoints --> UI_Timeline
+    ExecNode --> FinalNode
+    FinalNode --> DB_Sessions & DB_Profiles & DB_Results
+    FinalNode --> API_Endpoints
+    
+    API_Endpoints --> UI_Results
+    UI_Results --> UI_Export
+    UI_Results --> UI_Copilot
+    UI_Copilot <--> CopilotService
 ```
 
 ---
 
-## 🧭 Phases Roadmap
+## 📱 Interactive Results Experience
+
+TripMind AI renders a rich, modern 7-tab journey dashboard for any planned destination:
+
+1. **Overview Tab**: Executive trip summary, budget allocation, traveler dynamics, and quick-jump highlight cards.
+2. **Stay Tab**: Curated accommodations ranked by budget and location, with verified OpenStreetMap coordinates and AI selection rationale.
+3. **Explore Tab**: Authentic cultural monuments, heritage sites, and scenic landmarks with high-resolution imagery.
+4. **Food Tab**: Local gastronomy, traditional eateries, cafes, and bakeries with dietary match indicators and distances.
+5. **Transport Tab**: Geographic hub partitions, leg-by-leg transit corridors (walking, taxi, cab, private vehicle), and local transit advice.
+6. **Itinerary Tab**: Day-by-day chronological schedule with morning sightseeing, relaxed afternoons, and evening dining slots.
+7. **Map Tab**: Interactive Leaflet / OpenStreetMap view displaying hotels, sights, and dining pins with live external links.
+
+---
+
+## 📅 Calendar Sync, PDF Export & AI Co-Pilot
+
+### 1. Calendar Sync (`.ics` & Google Calendar)
+- **Universal `.ics` Export**: Click **"Sync Calendar (.ics)"** on the Itinerary tab to export an RFC-5545 `.ics` file containing all scheduled activities with exact start/end times and transit details.
+- **Individual Google Calendar Links**: Click **"+ Cal"** on any activity card to add that specific event directly to Google Calendar.
+
+### 2. Print & Save as PDF Travel Brochure
+- Click **"Print / PDF"** (or press `Ctrl+P`) to generate an editorial, publication-quality printable document with cover details, anchor accommodation, and day-by-day activity timelines.
+
+### 3. AI Trip Co-Pilot (Concierge Chat Drawer)
+- Click the floating **"Trip Co-Pilot"** button in the bottom-right corner.
+- Ask questions about:
+  - Packing lists based on destination weather
+  - Vegetarian / specific cuisine near your anchor hotel
+  - Pacing and walking strain for children or seniors
+  - Local customs, tips, and hidden gems
+
+---
+
+## 🧭 Completed Phases & Architecture
 
 | Phase | Module | Status | Highlights |
 | :--- | :--- | :---: | :--- |
@@ -93,9 +144,12 @@ flowchart TB
 | **Phase 4** | LangGraph Planning Agent | ✅ Completed | Autonomous task decomposition, dependency graph execution, execution trace. |
 | **Phase 5** | Live Weather Intelligence | ✅ Completed | Open-Meteo integration, 16-day forecast horizon, Groq packing & activity tips. |
 | **Phase 6** | Real Places & POIs Intelligence | ✅ Completed | OpenStreetMap Overpass POI engine, preference-aware ranking, Destination Discovery. |
-| **Phase 7** | Accommodations & Lodging | ⏳ Upcoming | Real accommodation scoring and proximity filtering. |
-| **Phase 8** | Transit & Route Optimization | ⏳ Upcoming | Inter-city and intra-city route connectivity optimization. |
-| **Phase 9** | Day-by-Day Itinerary Engine | ⏳ Upcoming | Automated day-wise sequencing with interactive schedule export. |
+| **Phase 7** | Accommodations & Lodging | ✅ Completed | Real accommodation scoring, OpenStreetMap geodata, lodging suitability notes. |
+| **Phase 8** | Transit & Route Optimization | ✅ Completed | Spatial clustering, Haversine corridors, transit mode guidance, and mobility overrides. |
+| **Phase 9** | Day-by-Day Itinerary Engine | ✅ Completed | Chronological daily sequencing, food integration, and weather responsiveness. |
+| **Phase 10**| Session Persistence | ✅ Completed | Supabase PostgreSQL schema and automatic snapshot saving. |
+| **Phase 11**| Export & Calendar Sync | ✅ Completed | Universal `.ics` file generation and Google Calendar event URLs. |
+| **Phase 12**| AI Trip Co-Pilot Concierge | ✅ Completed | Real-time chat drawer powered by Groq LLM grounded in current trip context. |
 
 ---
 
@@ -103,100 +157,19 @@ flowchart TB
 
 ### Frontend
 - **Framework**: React 18 (Vite)
-- **Styling**: Tailwind CSS (Tailored dark palette, glowing accents)
-- **Animations**: Framer Motion
+- **Styling**: Tailwind CSS (Tailored travel design system, cream & forest green palettes)
 - **Icons**: Lucide React
-- **HTTP Client**: Axios
+- **Maps**: Leaflet & OpenStreetMap
+- **Utilities**: Custom iCalendar RFC-5545 generator, print brochure engine
 
 ### Backend
 - **Framework**: FastAPI (Asynchronous Python 3.13)
-- **Data Validation**: Pydantic v2
+- **Validation**: Pydantic v2
 - **Agent Orchestration**: LangGraph, LangChain Core
-- **LLM Engine**: Groq Cloud (`langchain-groq`, `openai/gpt-oss-120b` / Llama-3 models)
-- **HTTP Client**: HTTPX (Async)
+- **LLM Provider**: Groq Cloud (`llama-3.3-70b-versatile`)
 - **Geospatial & POIs**: OpenStreetMap Nominatim, Overpass API QL
 - **Meteorology**: Open-Meteo Forecast & Geocoding APIs
-
----
-
-## 📦 Project Structure
-
-```text
-TripMind AI/
-├── backend/
-│   ├── app/
-│   │   ├── agents/
-│   │   │   ├── agent_state.py          # TypedDict LangGraph state
-│   │   │   └── planner_agent.py        # LangGraph state graph & tool routing
-│   │   ├── api/
-│   │   │   └── v1/
-│   │   │       ├── api.py              # API router aggregation
-│   │   │       └── endpoints/
-│   │   │           ├── trip.py         # Phase 1 & 2 analysis endpoints
-│   │   │           ├── preferences.py  # Phase 3 profile extraction endpoint
-│   │   │           └── plan.py         # Phase 4-6 autonomous planning endpoint
-│   │   ├── prompts/
-│   │   │   ├── trip_analysis_prompt.py
-│   │   │   ├── preferences_prompt.py
-│   │   │   └── planner_prompt.py
-│   │   ├── schemas/
-│   │   │   ├── trip.py                 # Trip input models
-│   │   │   ├── trip_analysis.py        # Structured analysis models
-│   │   │   ├── travel_preferences.py   # Enhanced profile models
-│   │   │   ├── weather.py              # Meteorological models
-│   │   │   ├── places.py               # Places, POIs & Ranked Attraction models
-│   │   │   └── travel_plan.py          # Planning task & response schemas
-│   │   ├── services/
-│   │   │   ├── llm_service.py          # Centralized ChatGroq instance
-│   │   │   ├── trip_analyzer.py
-│   │   │   ├── preference_extractor.py
-│   │   │   ├── weather_service.py      # Async Open-Meteo client
-│   │   │   ├── places_service.py       # Async Nominatim + Overpass POI engine
-│   │   │   ├── attraction_ranker.py    # Preference & weather-aware ranker
-│   │   │   └── planning_service.py     # Graph execution wrapper
-│   │   ├── tools/
-│   │   │   ├── weather_tool.py         # Weather tool interface & LLM insights
-│   │   │   └── places_tool.py          # Places tool interface
-│   │   ├── config.py                   # Environment & settings
-│   │   └── main.py                     # FastAPI entrypoint & CORS
-│   ├── tests/
-│   │   ├── test_phase2.py
-│   │   ├── test_phase3.py
-│   │   ├── test_phase4.py
-│   │   ├── test_phase5.py
-│   │   └── test_phase6.py              # Complete Phase 6 test suite
-│   ├── .env.example
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── AgentActivity.jsx       # Terminal-style execution trace
-│   │   │   ├── AgentPlanning.jsx       # Agent planning breakdown
-│   │   │   ├── DestinationDiscovery.jsx# Real POIs & Ranked Attractions UI
-│   │   │   ├── EnhancedTripProfile.jsx # Profile overview & CTA
-│   │   │   ├── Features.jsx            # Product features
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Hero.jsx                # Landing hero
-│   │   │   ├── HowItWorks.jsx
-│   │   │   ├── Navbar.jsx              # Dark glassmorphic navigation
-│   │   │   ├── PlanningTaskList.jsx    # Decomposed task cards
-│   │   │   ├── PlanningTimeline.jsx    # Orchestration timeline
-│   │   │   ├── TripForm.jsx            # Form & interactive narrative flow
-│   │   │   ├── TripHero.jsx            # Flight route hero header
-│   │   │   ├── TripIntelligence.jsx    # High-density intelligence tags
-│   │   │   ├── WeatherForecast.jsx     # Daily forecast grid with weather icons
-│   │   │   └── WeatherIntelligence.jsx # Weather intelligence card
-│   │   ├── pages/
-│   │   │   └── Home.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   ├── package.json
-│   └── tailwind.config.js
-│
-├── .gitignore
-└── README.md
-```
+- **Database / Storage**: Supabase (PostgreSQL with JSONB schemas)
 
 ---
 
@@ -205,7 +178,8 @@ TripMind AI/
 ### Prerequisites
 - **Python 3.11+** (Tested on Python 3.13)
 - **Node.js 18+** & `npm`
-- **Groq API Key** (Get free at [console.groq.com](https://console.groq.com))
+- **Groq API Key** (Free at [console.groq.com](https://console.groq.com))
+- **Supabase Account** (Optional, for persistent trip history)
 
 ---
 
@@ -232,10 +206,12 @@ cp .env.example .env
 Edit `backend/.env`:
 ```env
 GROQ_API_KEY=gsk_your_actual_groq_api_key_here
-GROQ_MODEL=openai/gpt-oss-120b
+GROQ_MODEL=llama-3.3-70b-versatile
 PROJECT_NAME="TripMind AI"
 ENVIRONMENT=development
 PORT=8000
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_KEY=your_supabase_anon_key
 ```
 
 Start the backend server:
@@ -262,34 +238,46 @@ Frontend UI will be live at: `http://localhost:5173`.
 
 ---
 
-## 🧪 Test Suite
+## 🧪 Testing & Verification
 
-TripMind AI features comprehensive end-to-end and unit tests across all phases using `pytest`:
+TripMind AI features comprehensive tests and verification tools:
 
 ```bash
 cd backend
 
-# Run all test suites
+# Run automated tests
 pytest tests/ -v
 
-# Run specific Phase 6 tests
-pytest tests/test_phase6.py -v
-```
+# Run persistence verification
+python tests/test_persistence.py
 
-### Test Coverage Highlights:
-- ✅ **Geocoding & Overpass**: Valid coordinates, radius bounds, OpenStreetMap normalization.
-- ✅ **Network Resilience**: 504 gateway timeout resilience, multi-mirror failover, Nominatim POI secondary fallback.
-- ✅ **Weather & Group Sensitivity**: Verifies weather caveats for outdoor activities during rain forecasts.
-- ✅ **Anti-Hallucination Checks**: Verifies that 100% of ranked places originate from verified OpenStreetMap IDs.
+# Test full end-to-end planning workflow
+python -c "
+import asyncio
+from app.services.planning_service import planning_service
+from app.schemas.travel_preferences import EnhancedTripProfile
+from app.schemas.trip import TripCreate
+from app.schemas.trip_analysis import TripAnalysis, BudgetLevel
+
+async def test():
+    req = TripCreate(destination='Kashmir', origin='Delhi', departure_date='2026-10-01', return_date='2026-10-05', travelers=2, budget=50000)
+    analysis = TripAnalysis(trip_summary='Scenic trip', duration_days=5, travel_style='Balanced', budget_per_traveler=25000, budget_per_day=10000, budget_level=BudgetLevel.MODERATE, accommodation_expectation='Standard hotel', notes='Autumn trip')
+    profile = EnhancedTripProfile(trip_request=req, trip_analysis=analysis)
+    res = await planning_service.create_travel_plan(profile)
+    print('SUCCESS:', res.success, 'Places:', len(res.places_context.places), 'Hotels:', len(res.hotel_context.hotels))
+
+asyncio.run(test())
+"
+```
 
 ---
 
-## 🛡️ Honesty & Anti-Hallucination Policy
+## 🛡️ Honesty & Grounding Standard
 
-TripMind AI is engineered under strict **zero-fabrication standards**:
-1. **Weather Truthfulness**: Live metrics are retrieved strictly from Open-Meteo. For trips beyond the 16-day forecast horizon, the system reports status transparently without making up fake temperatures.
-2. **Attraction Truthfulness**: All place names, coordinates, and categories originate from OpenStreetMap. The LLM is restricted strictly to scoring and reasoning over verified IDs.
-3. **Transparent State Tracking**: Downstream stages (Hotels, Flights, Day-Wise Itineraries) remain explicitly labeled as *Planned* until their respective real tools are integrated.
+TripMind AI enforces strict **data grounding standards**:
+1. **Weather Truthfulness**: Live metrics are retrieved strictly from Open-Meteo. Beyond the 16-day forecast horizon, the system indicates seasonal climate averages without fabricating exact daily temperatures.
+2. **Geographical Authenticity**: Sights, accommodations, and dining establishments are verified through OpenStreetMap and geocoded coordinates.
+3. **3-Tier Grounding Resilience**: If public Overpass servers experience traffic limits, the engine gracefully activates Nominatim and Groq LLM authentic knowledge fallbacks.
 
 ---
 
