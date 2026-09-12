@@ -4,23 +4,32 @@ from typing import Dict, Any, Optional, List
 from app.schemas.travel_preferences import EnhancedTripProfile
 from app.schemas.weather import WeatherResult, WeatherInsight
 from app.schemas.places import PlacesResult, RankedAttraction
+from app.schemas.hotel import HotelResult, RankedHotel
+from app.schemas.transportation import TransportationResult
+from app.schemas.food import FoodResult
+from app.schemas.itinerary import ItineraryResult
 from app.schemas.travel_plan import (
     TravelPlanResponse, 
     TravelPlanningResult, 
     ExecutionSummary,
     TravelPlanningTask
 )
-from app.agents.planner_agent import planner_graph
 
 logger = logging.getLogger(__name__)
 
 class PlanningService:
     @classmethod
-    async def create_travel_plan(cls, profile: EnhancedTripProfile) -> TravelPlanResponse:
+    async def create_travel_plan(
+        cls, 
+        profile: EnhancedTripProfile,
+        session_id: Optional[str] = None
+    ) -> TravelPlanResponse:
         """
         Executes the LangGraph autonomous travel planning workflow on an EnhancedTripProfile.
         """
+        from app.agents.planner_agent import planner_graph
         initial_state = {
+            "session_id": session_id,
             "enhanced_trip_profile": profile.model_dump(),
             "planning_tasks": [],
             "current_task": None,
@@ -29,6 +38,11 @@ class PlanningService:
             "weather_insight": None,
             "places_result": None,
             "ranked_attractions": None,
+            "hotel_result": None,
+            "ranked_hotels": None,
+            "transportation_result": None,
+            "food_result": None,
+            "itinerary_result": None,
             "agent_messages": [],
             "planning_status": "not_started",
             "planning_result": None,
@@ -47,6 +61,8 @@ class PlanningService:
             weather_ins_data = final_state.get("weather_insight")
             places_res_data = final_state.get("places_result")
             ranked_attr_data = final_state.get("ranked_attractions")
+            hotel_res_data = final_state.get("hotel_result")
+            ranked_hotel_data = final_state.get("ranked_hotels")
 
             # Reconstruct validated Pydantic objects
             tasks_objs = [TravelPlanningTask(**t) for t in completed_tasks_data]
@@ -71,15 +87,44 @@ class PlanningService:
                 [RankedAttraction(**r) for r in ranked_attr_data]
                 if ranked_attr_data is not None else None
             )
+            hotel_context_obj = HotelResult(**hotel_res_data) if hotel_res_data else None
+            ranked_hotels_objs = (
+                [RankedHotel(**h) for h in ranked_hotel_data]
+                if ranked_hotel_data is not None else None
+            )
+
+            transportation_res_data = final_state.get("transportation_result")
+            transportation_context_obj = (
+                TransportationResult(**transportation_res_data)
+                if transportation_res_data else None
+            )
+
+            food_res_data = final_state.get("food_result")
+            food_context_obj = (
+                FoodResult(**food_res_data)
+                if food_res_data else None
+            )
+
+            itinerary_res_data = final_state.get("itinerary_result")
+            itinerary_context_obj = (
+                ItineraryResult(**itinerary_res_data)
+                if itinerary_res_data else None
+            )
 
             return TravelPlanResponse(
                 success=True,
+                session_id=session_id,
                 planning_result=planning_result,
                 execution=execution_summary,
                 weather_context=weather_context_obj,
                 weather_insight=weather_insight_obj,
                 places_context=places_context_obj,
                 ranked_attractions=ranked_attractions_objs,
+                hotel_context=hotel_context_obj,
+                ranked_hotels=ranked_hotels_objs,
+                transportation_context=transportation_context_obj,
+                food_context=food_context_obj,
+                itinerary_context=itinerary_context_obj,
                 warning=None
             )
 

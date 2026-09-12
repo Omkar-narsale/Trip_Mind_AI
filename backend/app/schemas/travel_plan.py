@@ -3,6 +3,10 @@ from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 from app.schemas.weather import WeatherResult, WeatherInsight
 from app.schemas.places import PlacesResult, RankedAttraction
+from app.schemas.hotel import HotelResult, RankedHotel
+from app.schemas.transportation import TransportationResult
+from app.schemas.food import FoodResult
+from app.schemas.itinerary import ItineraryResult
 
 class TaskPriority(str, Enum):
     HIGH = "high"
@@ -21,6 +25,7 @@ class TaskType(str, Enum):
     ATTRACTION = "attraction"
     ACCOMMODATION = "accommodation"
     TRANSPORTATION = "transportation"
+    FOOD = "food"
     BUDGET = "budget"
     OPTIMIZATION = "optimization"
     ITINERARY = "itinerary"
@@ -95,10 +100,17 @@ class ExecutionSummary(BaseModel):
 
 class TravelPlanResponse(BaseModel):
     success: bool = True
+    session_id: Optional[str] = None
     planning_result: TravelPlanningResult
     execution: ExecutionSummary
     weather_context: Optional[WeatherResult] = None
     weather_insight: Optional[WeatherInsight] = None
     places_context: Optional[PlacesResult] = None
     ranked_attractions: Optional[List[RankedAttraction]] = None
+    hotel_context: Optional[HotelResult] = None
+    ranked_hotels: Optional[List[RankedHotel]] = None
+    transportation_context: Optional[TransportationResult] = None
+    food_context: Optional[FoodResult] = None
+    itinerary_context: Optional[ItineraryResult] = None
+    persistence: Optional[Dict[str, Any]] = None
     warning: Optional[str] = None

@@ -1,116 +1,166 @@
 import React, { useState } from 'react';
-import { Compass, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Compass, Menu, X, Bookmark, Sparkles, MapPin } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenSavedTrips, onScrollToPlanner }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const scrollToSection = (id) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-50 bg-dark-950/85 backdrop-blur-xl border-b border-white/5 transition-all">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-cream-300 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
-          <a 
-            href="#" 
-            className="flex items-center gap-2.5 text-white group focus:outline-none"
+          <div 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-white shadow-glow-brand group-hover:scale-105 transition-all">
-              <Compass className="w-5 h-5 transform group-hover:rotate-45 transition-transform duration-300" />
+            <div className="w-10 h-10 rounded-2xl bg-forest-700 text-white flex items-center justify-center shadow-sm group-hover:bg-forest-600 transition-colors">
+              <Compass className="w-5 h-5 transition-transform group-hover:rotate-45" />
             </div>
-            <span className="text-lg sm:text-xl font-black tracking-tight text-white">
-              TripMind <span className="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
-            </span>
-          </a>
+            <div>
+              <span className="text-xl font-extrabold text-travel-dark tracking-tight block font-sans">
+                TripMind
+              </span>
+              <span className="text-[11px] font-semibold text-forest-700 tracking-wider uppercase block -mt-1">
+                Travel Journeys
+              </span>
+            </div>
+          </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-7">
-            <a 
-              href="#home" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-travel-body">
+            <button 
+              type="button" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-travel-dark hover:text-forest-700 transition-colors"
             >
               Home
-            </a>
-            <a 
-              href="#how-it-works" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
-              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+            </button>
+            <button 
+              type="button" 
+              onClick={() => {
+                const el = document.getElementById('popular-destinations');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="hover:text-forest-700 transition-colors"
             >
-              How It Works
-            </a>
-            <a 
-              href="#features" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
-              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+              Destinations
+            </button>
+            <button 
+              type="button" 
+              onClick={() => {
+                const el = document.getElementById('why-tripmind');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="hover:text-forest-700 transition-colors"
             >
-              Features
-            </a>
+              Experience
+            </button>
+            <button 
+              type="button" 
+              onClick={onOpenSavedTrips}
+              className="hover:text-forest-700 transition-colors flex items-center gap-1.5"
+            >
+              <Bookmark className="w-4 h-4 text-forest-600" />
+              <span>My Trips</span>
+            </button>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center">
+          {/* Right Action CTAs */}
+          <div className="hidden md:flex items-center gap-3">
             <button
-              onClick={() => scrollToSection('trip-form')}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-glow-brand transition-all duration-200"
+              type="button"
+              onClick={onOpenSavedTrips}
+              className="px-4 py-2.5 rounded-full text-xs font-bold text-travel-body hover:text-travel-dark hover:bg-cream-200/70 transition-colors"
             >
-              <Sparkles className="w-3.5 h-3.5 text-brand-200" />
-              <span>Plan Trip</span>
+              Saved Trips
+            </button>
+            <button
+              type="button"
+              onClick={onScrollToPlanner}
+              className="px-5 py-2.5 rounded-full text-xs font-bold text-white bg-forest-700 hover:bg-forest-800 shadow-sm transition-all hover:scale-[1.02] flex items-center gap-2"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-forest-200" />
+              <span>Plan a Trip</span>
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center gap-2">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 focus:outline-none"
-              aria-label="Toggle menu"
+              className="p-2 rounded-xl text-travel-dark hover:bg-cream-200 transition-colors"
+              aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/5 bg-dark-900 px-4 pt-2 pb-5 space-y-2">
-          <a
-            href="#home"
-            onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
-          >
-            Home
-          </a>
-          <a
-            href="#how-it-works"
-            onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
-          >
-            How It Works
-          </a>
-          <a
-            href="#features"
-            onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
-            className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white"
-          >
-            Features
-          </a>
-          <button
-            onClick={() => scrollToSection('trip-form')}
-            className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold shadow-glow-brand"
-          >
-            <span>Plan Trip</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+        <div className="md:hidden bg-white border-b border-cream-300 px-6 py-5 space-y-4 shadow-xl">
+          <nav className="flex flex-col space-y-3 text-sm font-semibold text-travel-body">
+            <button 
+              type="button" 
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-1 text-travel-dark"
+            >
+              Home
+            </button>
+            <button 
+              type="button" 
+              onClick={() => {
+                const el = document.getElementById('popular-destinations');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-1"
+            >
+              Destinations
+            </button>
+            <button 
+              type="button" 
+              onClick={() => {
+                const el = document.getElementById('why-tripmind');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-1"
+            >
+              Experience
+            </button>
+            <button 
+              type="button" 
+              onClick={() => {
+                onOpenSavedTrips();
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-1 flex items-center gap-2 text-forest-700"
+            >
+              <Bookmark className="w-4 h-4" />
+              <span>My Trips</span>
+            </button>
+          </nav>
+          
+          <div className="pt-3 border-t border-cream-200">
+            <button
+              type="button"
+              onClick={() => {
+                onScrollToPlanner();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full py-3 rounded-full text-center text-xs font-bold text-white bg-forest-700 hover:bg-forest-800 shadow-sm transition-all"
+            >
+              Plan a Trip
+            </button>
+          </div>
         </div>
       )}
     </header>

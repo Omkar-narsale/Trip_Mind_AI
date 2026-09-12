@@ -7,6 +7,15 @@ from .travel_preferences import (
 )
 from .weather import WeatherDay, WeatherResult, WeatherInsight
 from .places import Place, PlacesResult, RankedAttraction, RankedAttractionList
+from .hotel import Hotel, RankedHotel, HotelResult, RankedHotelList
+from .transportation import (
+    LocationType,
+    TransportationMode,
+    LocationPoint,
+    LocationCluster,
+    TransportationRecommendation,
+    TransportationResult
+)
 from .travel_plan import (
     TaskPriority,
     TaskStatus,
@@ -33,6 +42,16 @@ __all__ = [
     "PlacesResult",
     "RankedAttraction",
     "RankedAttractionList",
+    "Hotel",
+    "RankedHotel",
+    "HotelResult",
+    "RankedHotelList",
+    "LocationType",
+    "TransportationMode",
+    "LocationPoint",
+    "LocationCluster",
+    "TransportationRecommendation",
+    "TransportationResult",
     "TaskPriority",
     "TaskStatus",
     "TaskType",

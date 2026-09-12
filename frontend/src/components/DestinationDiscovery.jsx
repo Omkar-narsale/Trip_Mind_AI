@@ -20,6 +20,7 @@ import {
   Layers,
   CloudSun
 } from 'lucide-react';
+import { getOpenStreetMapUrl } from '../utils/osm';
 
 const CATEGORY_ICONS = {
   'Museum & Heritage': Landmark,
@@ -213,9 +214,25 @@ export default function DestinationDiscovery({ placesContext, rankedAttractions 
                     </p>
                   </div>
 
+                  {/* OpenStreetMap Link */}
+                  {place.latitude && place.longitude && (
+                    <div className="pt-2 border-t border-white/5 flex items-center justify-end">
+                      <a
+                        href={getOpenStreetMapUrl(place.latitude, place.longitude)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[11px] text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                      >
+                        <MapPin className="w-3 h-3" />
+                        <span>View on OpenStreetMap</span>
+                        <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    </div>
+                  )}
+
                   {/* Potential Considerations / Caveats */}
                   {potential_considerations && potential_considerations.length > 0 && (
-                    <div className="mt-4 pt-3 border-t border-white/5 space-y-1">
+                    <div className="mt-3 pt-3 border-t border-white/5 space-y-1">
                       {potential_considerations.map((note, nIdx) => (
                         <div key={nIdx} className="flex items-start gap-1.5 text-[11px] text-slate-400">
                           <ShieldAlert className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
@@ -274,9 +291,22 @@ export default function DestinationDiscovery({ placesContext, rankedAttractions 
                     </p>
                   </div>
 
-                  <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
-                    {suitability_reason}
-                  </p>
+                  <div className="flex items-center justify-between pt-1 border-t border-white/5">
+                    <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed flex-grow">
+                      {suitability_reason}
+                    </p>
+                    {place.latitude && place.longitude && (
+                      <a
+                        href={getOpenStreetMapUrl(place.latitude, place.longitude)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 text-blue-400 hover:text-blue-300 flex-shrink-0"
+                        title="Open in OpenStreetMap"
+                      >
+                        <MapPin className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
                 </motion.div>
               );
             })}

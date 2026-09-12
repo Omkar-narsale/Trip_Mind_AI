@@ -4,34 +4,58 @@
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: #060911;
-    color: #f1f5f9;
-    color-scheme: dark;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F6F6F2;
+    color: #111110;
   }
 
   body {
-    background-color: #060911;
-    color: #f1f5f9;
+    background-color: #F6F6F2;
+    color: #111110;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Date inputs clean appearance across browsers */
+  input[type="date"] {
+    position: relative;
+    color-scheme: light;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.55;
+    padding: 0;
+    margin-left: 2px;
+    transition: opacity 0.2s;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
   }
 }
 
-/* Custom modern dark scrollbar */
+/* Custom elegant light scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0f1d;
+  background: #EFEFE8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e2e4a;
-  border-radius: 4px;
+  background: #C2DFCE;
+  border-radius: 9999px;
+  border: 2px solid #EFEFE8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2b8aff;
+  background: #40916C;
 }

@@ -1,67 +1,118 @@
 import React from 'react';
-import { Compass } from 'lucide-react';
+import { Compass, Heart, ArrowUp } from 'lucide-react';
 
-export default function Footer() {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+export default function Footer({ onOpenSavedTrips, onScrollToPlanner }) {
   return (
-    <footer className="bg-dark-950 text-slate-400 py-12 md:py-16 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/5">
+    <footer className="bg-white border-t border-cream-300 pt-16 pb-12 px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-cream-200">
           
-          {/* Brand Info */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-2.5 text-white">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-white shadow-glow-brand">
-                <Compass className="w-4 h-4" />
+          {/* Brand Col */}
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-2xl bg-forest-700 text-white flex items-center justify-center shadow-sm">
+                <Compass className="w-5 h-5" />
               </div>
-              <span className="text-lg font-black tracking-tight">
-                TripMind <span className="text-brand-400">AI</span>
+              <span className="text-xl font-extrabold text-travel-dark font-sans tracking-tight">
+                TripMind
               </span>
             </div>
-            <p className="mt-2 text-xs text-slate-400 max-w-sm">
-              Autonomous Travel Intelligence Powered by LangGraph, Open-Meteo, & Groq LLMs.
+
+            <p className="text-sm text-travel-body max-w-md leading-relaxed">
+              TripMind creates personalized journeys using live weather intelligence, OpenStreetMap verified destinations, and intelligent day-by-day scheduling.
             </p>
+
+            <div className="pt-2 text-xs text-travel-muted">
+              <span>Designed with an editorial travel agency aesthetic.</span>
+            </div>
           </div>
 
-          {/* Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-7 text-xs font-semibold">
-            <a 
-              href="#home" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              Home
-            </a>
-            <a 
-              href="#how-it-works" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              How It Works
-            </a>
-            <a 
-              href="#features" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              Features
-            </a>
-          </nav>
+          {/* Quick Links */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-travel-dark">
+              Explore
+            </h4>
+            <ul className="space-y-2 text-xs font-semibold text-travel-body">
+              <li>
+                <button 
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="hover:text-forest-700 transition-colors"
+                >
+                  Featured Journeys
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('popular-destinations');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-forest-700 transition-colors"
+                >
+                  Popular Destinations
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('why-tripmind');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-forest-700 transition-colors"
+                >
+                  The TripMind Standard
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Account / Trips */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-travel-dark">
+              Journeys
+            </h4>
+            <ul className="space-y-2 text-xs font-semibold text-travel-body">
+              <li>
+                <button 
+                  type="button"
+                  onClick={onScrollToPlanner}
+                  className="hover:text-forest-700 transition-colors"
+                >
+                  Plan a New Trip
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button"
+                  onClick={onOpenSavedTrips}
+                  className="hover:text-forest-700 transition-colors"
+                >
+                  My Saved Trips
+                </button>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
-        {/* Bottom copyright and notes */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
-          <p>© {new Date().getFullYear()} TripMind AI. Autonomous Agent Project.</p>
-          <div className="flex items-center gap-1 font-mono">
-            <span>React · Tailwind CSS · FastAPI · LangGraph · Open-Meteo</span>
-          </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-travel-muted">
+          <p>© {new Date().getFullYear()} TripMind. All rights reserved.</p>
+
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-1 hover:text-travel-dark transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
+
       </div>
     </footer>
   );

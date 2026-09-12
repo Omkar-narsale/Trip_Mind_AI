@@ -2,6 +2,7 @@ from typing import TypedDict, List, Optional, Dict, Any
 from app.schemas.travel_plan import TravelPlanningTask, TravelPlanningResult
 
 class AgentState(TypedDict):
+    session_id: Optional[str]
     enhanced_trip_profile: Dict[str, Any]
     planning_tasks: List[Dict[str, Any]]
     current_task: Optional[Dict[str, Any]]
@@ -10,6 +11,11 @@ class AgentState(TypedDict):
     weather_insight: Optional[Dict[str, Any]]
     places_result: Optional[Dict[str, Any]]
     ranked_attractions: Optional[List[Dict[str, Any]]]
+    hotel_result: Optional[Dict[str, Any]]
+    ranked_hotels: Optional[List[Dict[str, Any]]]
+    transportation_result: Optional[Dict[str, Any]]
+    food_result: Optional[Dict[str, Any]]
+    itinerary_result: Optional[Dict[str, Any]]
     agent_messages: List[str]
     planning_status: str
     planning_result: Optional[Dict[str, Any]]

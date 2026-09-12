@@ -20,11 +20,11 @@ const STANDARD_STAGES = [
   { id: 'profile', label: 'Understand Trip Parameters', done: true, phase: 'Phase 1-2' },
   { id: 'prefs', label: 'Analyze Natural Preferences', done: true, phase: 'Phase 3' },
   { id: 'strategy', label: 'Build Autonomous Strategy', done: true, phase: 'Phase 4' },
-  { id: 'weather', label: 'Live Weather Intelligence', done: true, icon: CloudSun, phase: 'Phase 5 (Live Tool)' },
-  { id: 'attractions', label: 'Discover Experiences & Places', active: true, done: true, icon: Compass, phase: 'Phase 6 (Live Tool)' },
-  { id: 'hotels', label: 'Find & Score Lodging Options', future: true, icon: Hotel, phase: 'Future Stage' },
-  { id: 'transit', label: 'Optimize Transportation Routes', future: true, icon: Navigation, phase: 'Future Stage' },
-  { id: 'itinerary', label: 'Synthesize Day-Wise Itinerary', future: true, icon: CalendarDays, phase: 'Future Stage' }
+  { id: 'weather', label: 'Check Live Weather', done: true, icon: CloudSun, phase: 'Phase 5 (Live Tool)' },
+  { id: 'attractions', label: 'Discover Experiences', done: true, icon: Compass, phase: 'Phase 6 (Live Tool)' },
+  { id: 'hotels', label: 'Find Accommodation', done: true, icon: Hotel, phase: 'Phase 7 (Live Tool)' },
+  { id: 'transit', label: 'Optimize Transportation', active: true, done: true, icon: Navigation, phase: 'Phase 8 (Live Engine)' },
+  { id: 'itinerary', label: 'Build Final Itinerary', future: true, icon: CalendarDays, phase: 'Future Stage' }
 ];
 
 const PRIORITY_BADGES = {
@@ -121,6 +121,7 @@ export default function PlanningTimeline({ tasks, planningStrategy }) {
               const pStyle = PRIORITY_BADGES[task.priority?.toLowerCase()] || PRIORITY_BADGES.medium;
               const isWeather = task.task_type === 'weather' || task.task_id?.includes('weather');
               const isAttraction = task.task_type === 'attraction' || task.task_id?.includes('attraction') || task.task_id?.includes('sightseeing');
+              const isAccommodation = task.task_type === 'accommodation' || task.task_id?.includes('accommodation') || task.task_id?.includes('hotel') || task.task_id?.includes('lodging') || task.task_id?.includes('stay');
 
               return (
                 <motion.div
@@ -129,7 +130,9 @@ export default function PlanningTimeline({ tasks, planningStrategy }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: idx * 0.04 }}
                   className={`p-4 rounded-2xl border transition-all ${
-                    isAttraction
+                    isAccommodation
+                      ? 'bg-gradient-to-r from-purple-950/60 to-dark-850 border-purple-500/30'
+                      : isAttraction
                       ? 'bg-gradient-to-r from-indigo-950/60 to-dark-850 border-indigo-500/30'
                       : isWeather
                       ? 'bg-gradient-to-r from-brand-950/60 to-dark-850 border-brand-500/30'
@@ -139,7 +142,9 @@ export default function PlanningTimeline({ tasks, planningStrategy }) {
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                     <div className="flex items-start gap-3">
                       <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
-                        isAttraction
+                        isAccommodation
+                          ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40'
+                          : isAttraction
                           ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40'
                           : isWeather 
                           ? 'bg-brand-500/20 text-brand-300 border border-brand-500/40' 
@@ -160,6 +165,11 @@ export default function PlanningTimeline({ tasks, planningStrategy }) {
                           {isAttraction && (
                             <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
                               Live OpenStreetMap Tool
+                            </span>
+                          )}
+                          {isAccommodation && (
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                              Live Accommodation Tool
                             </span>
                           )}
                         </div>
