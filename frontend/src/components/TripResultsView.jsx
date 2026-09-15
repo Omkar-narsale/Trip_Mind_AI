@@ -8,6 +8,7 @@ import FoodSection from './results/FoodSection';
 import TransportSection from './results/TransportSection';
 import ItinerarySection from './results/ItinerarySection';
 import PackingSection from './results/PackingSection';
+import BudgetSection from './results/BudgetSection';
 import MapSection from './results/MapSection';
 import DeveloperModeModal from './results/DeveloperModeModal';
 import PrintBrochureView from './results/PrintBrochureView';
@@ -89,6 +90,9 @@ export default function TripResultsView({
           <StaySection
             hotels={hotels}
             destination={destination}
+            departureDate={departureDate}
+            returnDate={returnDate}
+            travelers={travelers}
           />
         )}
 
@@ -110,6 +114,10 @@ export default function TripResultsView({
           <TransportSection
             transportationData={transportationData}
             destination={destination}
+            origin={origin}
+            departureDate={departureDate}
+            returnDate={returnDate}
+            travelers={travelers}
           />
         )}
 
@@ -131,6 +139,18 @@ export default function TripResultsView({
             itineraryData={itineraryData}
             travelers={travelers}
             styles={styles}
+          />
+        )}
+
+        {activeTab === 'budget' && (
+          <BudgetSection
+            destination={destination}
+            origin={origin}
+            budget={budget}
+            travelers={travelers}
+            totalDays={totalDays}
+            tripProfile={tripProfile}
+            planResponse={planResponse}
           />
         )}
 

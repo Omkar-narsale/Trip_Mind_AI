@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  LayoutDashboard, Building2, Compass, Utensils, Car, Calendar, Luggage, Map as MapIcon
+  LayoutDashboard, Building2, Compass, Utensils, Car, Calendar, Luggage, Wallet, Map as MapIcon
 } from 'lucide-react';
 
 const TABS = [
@@ -11,6 +11,7 @@ const TABS = [
   { id: 'transport', label: 'Transport', icon: Car },
   { id: 'itinerary', label: 'Itinerary', icon: Calendar },
   { id: 'packing', label: 'Packing & Prep', icon: Luggage },
+  { id: 'budget', label: 'Budget & Expenses', icon: Wallet },
   { id: 'map', label: 'Map', icon: MapIcon },
 ];
 

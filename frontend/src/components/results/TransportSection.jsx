@@ -1,19 +1,33 @@
-import React from 'react';
-import { Car, Navigation, ShieldCheck, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
+import { 
+  Car, Navigation, ShieldCheck, MapPin, Clock, Users, 
+  ArrowRight, Plane, Train, Bus, ExternalLink, Sparkles, CheckCircle2 
+} from 'lucide-react';
+import { getGoogleFlightsUrl, getTrainSearchUrl, getBusSearchUrl } from '../../utils/bookingAffiliates';
 
-export default function TransportSection({ transportationData, destination = 'Jaipur' }) {
+export default function TransportSection({ 
+  transportationData, 
+  destination = 'Jaipur',
+  origin = 'Mumbai',
+  departureDate,
+  returnDate,
+  travelers = 2
+}) {
   const routes = transportationData?.recommendations || transportationData?.evaluated_routes || [];
   const hubs = transportationData?.clusters || transportationData?.geographic_hubs || [];
   const isAccessible = transportationData?.accessibility_applied;
   const transitSummary = transportationData?.summary;
   const routeInsights = transportationData?.route_optimization_insights || [];
 
+  const flightUrl = getGoogleFlightsUrl(origin, destination, departureDate, returnDate, travelers);
+  const trainUrl = getTrainSearchUrl(origin, destination, departureDate);
+  const busUrl = getBusSearchUrl(origin, destination, departureDate);
+
   return (
     <div className="space-y-8">
       {/* Header */}
       <div>
         <span className="text-xs font-bold uppercase tracking-wider text-forest-700 bg-forest-100 px-3.5 py-1 rounded-full inline-block mb-2">
-          Route Intelligence
+          Route Intelligence & Live Booking
         </span>
         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-travel-dark tracking-tight">
           Getting around {destination}
@@ -21,6 +35,120 @@ export default function TransportSection({ transportationData, destination = 'Ja
         <p className="text-sm sm:text-base text-travel-body mt-2 max-w-2xl">
           {transitSummary || 'Practical transit guidance designed for smooth journeys between your hotel and key sightseeing hubs.'}
         </p>
+      </div>
+
+      {/* Intercity Transit & Ticket Booking Hub (Monetization Deep Links) */}
+      <div className="rounded-3xl bg-white border border-cream-300 p-6 sm:p-8 shadow-subtle space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest-50 text-forest-700 text-xs font-bold uppercase tracking-wider mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Intercity Transit & Booking Links</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-serif font-bold text-travel-dark">
+              Travel between {origin} & {destination}
+            </h3>
+            <p className="text-xs sm:text-sm text-travel-body mt-1">
+              Direct pre-filled booking redirects for flights, express trains, and highway buses.
+            </p>
+          </div>
+          <div className="text-xs text-travel-muted font-medium flex items-center gap-1.5 self-start sm:self-auto bg-cream-50 px-3 py-1.5 rounded-full border border-cream-200">
+            <CheckCircle2 className="w-3.5 h-3.5 text-forest-700" />
+            <span>Pre-filled for {departureDate || 'Upcoming'} • {travelers} passenger{travelers > 1 ? 's' : ''}</span>
+          </div>
+        </div>
+
+        {/* 3 Booking Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          
+          {/* Flight Search */}
+          <a
+            href={flightUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-5 rounded-2xl bg-[#f8fafd] border border-blue-200 hover:border-blue-400 hover:shadow-subtle transition-all flex flex-col justify-between group cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                  <Plane className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+                  Google Flights
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-travel-dark group-hover:text-blue-700 transition-colors">
+                Flights to {destination}
+              </h4>
+              <p className="text-xs text-travel-body mt-1">
+                Direct and connecting flights from {origin}. Pre-filled dates and passenger count.
+              </p>
+            </div>
+            <div className="pt-4 mt-4 border-t border-blue-100 flex items-center justify-between text-xs font-bold text-blue-700">
+              <span>Compare live fares</span>
+              <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </a>
+
+          {/* Train Search */}
+          <a
+            href={trainUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-5 rounded-2xl bg-[#fffaf5] border border-amber-200 hover:border-amber-400 hover:shadow-subtle transition-all flex flex-col justify-between group cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                  <Train className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                  IRCTC / ConfirmTkt
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-travel-dark group-hover:text-amber-700 transition-colors">
+                Train Routes & PNR
+              </h4>
+              <p className="text-xs text-travel-body mt-1">
+                Express and superfast trains between {origin} and {destination} with seat availability.
+              </p>
+            </div>
+            <div className="pt-4 mt-4 border-t border-amber-100 flex items-center justify-between text-xs font-bold text-amber-700">
+              <span>Check train seats</span>
+              <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </a>
+
+          {/* Highway Bus Search */}
+          <a
+            href={busUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-5 rounded-2xl bg-[#f9fafb] border border-stone-200 hover:border-stone-400 hover:shadow-subtle transition-all flex flex-col justify-between group cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-9 h-9 rounded-xl bg-stone-100 text-stone-700 flex items-center justify-center">
+                  <Bus className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-800 border border-stone-200">
+                  RedBus / Highway
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-travel-dark group-hover:text-stone-900 transition-colors">
+                Intercity Buses & Cabs
+              </h4>
+              <p className="text-xs text-travel-body mt-1">
+                AC Volvo sleepers and private highway transfers between {origin} and {destination}.
+              </p>
+            </div>
+            <div className="pt-4 mt-4 border-t border-stone-200 flex items-center justify-between text-xs font-bold text-stone-700">
+              <span>View bus timings</span>
+              <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </a>
+
+        </div>
       </div>
 
       {/* Accessibility / Travel Advice Banner */}

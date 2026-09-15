@@ -322,3 +322,24 @@ async def get_packing_checklist(req: PackingRequest):
             detail=f"Packing checklist generation failed: {str(e)}"
         )
 
+from app.schemas.budget import BudgetPlanRequest, BudgetPlanResponse
+from app.services.budget_service import budget_service
+
+@router.post(
+    "/budget/allocation",
+    response_model=BudgetPlanResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Smart Destination Budget Allocation & Multi-Currency Converter",
+    description="Calculates realistic itemized budget allocation (Stay, Food, Transit, Entry fees, Buffer) and currency matrix."
+)
+async def get_budget_allocation(req: BudgetPlanRequest):
+    try:
+        return await budget_service.calculate_budget_allocation(req)
+    except Exception as e:
+        logger.error(f"Error calculating budget allocation: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Budget calculation failed: {str(e)}"
+        )
+
+
