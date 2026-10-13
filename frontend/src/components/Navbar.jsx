@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Compass, Menu, X, Bookmark, Sparkles, MapPin } from 'lucide-react';
+import { Compass, Menu, X, Bookmark, Sparkles, MapPin, Scan } from 'lucide-react';
 
-export default function Navbar({ onOpenSavedTrips, onScrollToPlanner }) {
+export default function Navbar({ onOpenSavedTrips, onScrollToPlanner, onOpenScanner }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -70,6 +70,15 @@ export default function Navbar({ onOpenSavedTrips, onScrollToPlanner }) {
           <div className="hidden md:flex items-center gap-3">
             <button
               type="button"
+              onClick={onOpenScanner}
+              className="px-3.5 py-2 rounded-full text-xs font-bold text-forest-800 bg-forest-100 hover:bg-forest-200 border border-forest-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+              title="Scan travel ticket or voucher with Groq Vision AI"
+            >
+              <Scan className="w-3.5 h-3.5 text-forest-700" />
+              <span>Scan Ticket 📷</span>
+            </button>
+            <button
+              type="button"
               onClick={onOpenSavedTrips}
               className="px-4 py-2.5 rounded-full text-xs font-bold text-travel-body hover:text-travel-dark hover:bg-cream-200/70 transition-colors"
             >
@@ -78,7 +87,7 @@ export default function Navbar({ onOpenSavedTrips, onScrollToPlanner }) {
             <button
               type="button"
               onClick={onScrollToPlanner}
-              className="px-5 py-2.5 rounded-full text-xs font-bold text-white bg-forest-700 hover:bg-forest-800 shadow-sm transition-all hover:scale-[1.02] flex items-center gap-2"
+              className="px-5 py-2.5 rounded-full text-xs font-bold text-white bg-forest-700 hover:bg-forest-800 shadow-sm transition-all hover:scale-[1.02] flex items-center gap-2 cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5 text-forest-200" />
               <span>Plan a Trip</span>

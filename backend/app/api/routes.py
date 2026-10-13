@@ -342,4 +342,100 @@ async def get_budget_allocation(req: BudgetPlanRequest):
             detail=f"Budget calculation failed: {str(e)}"
         )
 
+# ================================================================
+# RAG VECTOR DATABASE & TURN-BY-TURN ROUTING ENDPOINTS
+# ================================================================
+
+from app.schemas.rag import RAGQueryRequest, RAGQueryResponse, RAGDestinationsResponse
+from app.services.vector_db_service import vector_db_service
+from app.schemas.routing import RoutePreviewRequest, RoutePreviewResponse
+from app.services.routing_service import routing_service
+
+@router.post(
+    "/rag/query",
+    response_model=RAGQueryResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Query Destination Vector Database (RAG)",
+    description="Calculates Cosine Similarity against destination safety, transit rules, and visa intelligence chunks."
+)
+async def query_vector_database(req: RAGQueryRequest):
+    try:
+        chunks = vector_db_service.query(
+            destination=req.destination,
+            query_text=req.query,
+            top_k=req.top_k
+        )
+        return RAGQueryResponse(
+            destination=req.destination,
+            query=req.query,
+            total_found=len(chunks),
+            results=chunks
+        )
+    except Exception as e:
+        logger.error(f"Error querying vector database: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Vector search failed: {str(e)}"
+        )
+
+@router.get(
+    "/rag/destinations",
+    response_model=RAGDestinationsResponse,
+    status_code=status.HTTP_200_OK,
+    summary="List Indexed Destinations in Vector Store",
+    description="Returns destination documents, chunk counts, and categorized intelligence in the vector database."
+)
+async def get_indexed_rag_destinations():
+    try:
+        return vector_db_service.get_indexed_destinations()
+    except Exception as e:
+        logger.error(f"Error retrieving indexed destinations: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to retrieve vector store summary."
+        )
+
+@router.post(
+    "/routes/preview",
+    response_model=RoutePreviewResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Turn-by-Turn Route Preview & Waypoint Navigation",
+    description="Queries Open Source Routing Machine (OSRM) to calculate exact driving/walking polyline coordinates and step maneuvers."
+)
+async def get_route_preview(req: RoutePreviewRequest):
+    try:
+        return await routing_service.get_route_preview(req)
+    except Exception as e:
+        logger.error(f"Error generating route preview: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Route preview failed: {str(e)}"
+        )
+
+# ================================================================
+# MULTIMODAL VISION MODEL TICKET SCANNER (CO5 - EXPERIMENT 10)
+# ================================================================
+
+from app.schemas.vision import VisionScanRequest, VisionScanResponse
+from app.services.vision_service import vision_service
+
+@router.post(
+    "/vision/scan-ticket",
+    response_model=VisionScanResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Multimodal AI Ticket & Document Scanner",
+    description="Uses Groq multimodal vision model (qwen/qwen3.8-27b) to extract origin, destination, dates, and passengers from tickets/vouchers."
+)
+async def scan_ticket_with_vision(req: VisionScanRequest):
+    try:
+        return await vision_service.scan_ticket(req)
+    except Exception as e:
+        logger.error(f"Error in vision ticket scan endpoint: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Multimodal vision scanning failed: {str(e)}"
+        )
+
+
+
 

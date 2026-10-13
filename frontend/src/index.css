@@ -1,3 +1,4 @@
+@import "leaflet/dist/leaflet.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,3 +60,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #40916C;
 }
+
+/* Custom Leaflet Hover Tooltip */
+.leaflet-tooltip.custom-hover-tooltip {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  padding: 8px 12px !important;
+  color: #111827 !important;
+  font-family: inherit !important;
+}
+
+.leaflet-tooltip.custom-hover-tooltip:before {
+  border-top-color: #FFFFFF !important;
+}
+

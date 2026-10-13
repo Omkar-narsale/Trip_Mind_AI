@@ -7,12 +7,14 @@ import WhyTripMind from '../components/WhyTripMind';
 import TripResultsView from '../components/TripResultsView';
 import LoadingExperience from '../components/LoadingExperience';
 import SavedTripsModal from '../components/SavedTripsModal';
+import TicketScannerModal from '../components/TicketScannerModal';
 import Footer from '../components/Footer';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
 export default function Home() {
   const [isSavedTripsOpen, setIsSavedTripsOpen] = useState(false);
+  const [isTicketScannerOpen, setIsTicketScannerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -167,6 +169,23 @@ export default function Home() {
   // Saved trips can be loaded on-demand via the SavedTripsModal
   // Initial page load always starts clean with an empty form
 
+  // Handle Auto-fill from Vision AI Ticket Scanner
+  const handleApplyExtractedTicket = (data) => {
+    setFormData((prev) => ({
+      ...prev,
+      origin: data.origin || prev.origin,
+      destination: data.destination || prev.destination,
+      departure_date: data.departure_date || prev.departure_date,
+      return_date: data.return_date || prev.return_date,
+      travelers: data.travelers_count || data.travelers || prev.travelers,
+      budget: data.budget_estimate ? String(data.budget_estimate) : (data.budget ? String(data.budget) : (prev.budget || '30000')),
+      additional_instructions: data.carrier_or_hotel 
+        ? `Scanned booking: ${data.carrier_or_hotel} (PNR: ${data.booking_reference_pnr || data.pnr || 'CONFIRMED'}). Factor into schedule.` 
+        : prev.additional_instructions
+    }));
+    scrollToPlanner();
+  };
+
   // Handle New Trip Reset
   const handleNewTrip = () => {
     localStorage.removeItem('tripmind_active_session_id');
@@ -183,6 +202,7 @@ export default function Home() {
       <Navbar
         onOpenSavedTrips={() => setIsSavedTripsOpen(true)}
         onScrollToPlanner={scrollToPlanner}
+        onOpenScanner={() => setIsTicketScannerOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -254,6 +274,13 @@ export default function Home() {
         isOpen={isSavedTripsOpen}
         onClose={() => setIsSavedTripsOpen(false)}
         onSelectTrip={(sessionData) => restoreSessionData(sessionData)}
+      />
+
+      {/* Multimodal AI Ticket & Voucher Scanner Modal */}
+      <TicketScannerModal
+        isOpen={isTicketScannerOpen}
+        onClose={() => setIsTicketScannerOpen(false)}
+        onApplyExtractedTrip={handleApplyExtractedTicket}
       />
 
     </div>

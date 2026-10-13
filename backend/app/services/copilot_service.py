@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 from app.services.llm_service import get_llm
 from app.schemas.copilot import TripChatRequest, TripChatResponse
+from app.services.vector_db_service import vector_db_service
 
 logger = logging.getLogger(__name__)
 
@@ -26,13 +27,17 @@ CURRENT TRIP PROFILE:
 - Trip Context & Style: {trip_summary}
 - Key Planned Activities: {activities_text}
 
+GROUNDED KNOWLEDGE BASE (Retrieved from Destination Vector Database):
+{rag_knowledge}
+
 CONCIERGE DIRECTIVES:
 1. Be concise, warm, knowledgeable, and elegant.
-2. Ground all advice in their actual destination, anchor hotel, and scheduled activities.
-3. If they ask about packing, factor in their destination's climate and activities.
-4. If they ask about food or cafes, suggest real, authentic culinary spots near their hotel or sights.
-5. If they ask to modify or slow down pacing, provide actionable advice on which stops can be relaxed or skipped.
-6. Provide 2-3 short, highly relevant follow-up suggestion chips that the user can ask next."""
+2. Ground all advice in their actual destination, anchor hotel, scheduled activities, and vector-retrieved destination rules.
+3. If they ask about safety, emergency numbers, or scams, prioritize the verified facts retrieved from the vector knowledge base above.
+4. If they ask about transit (taxis, IC cards, metro rules), quote the verified local transport rules retrieved above.
+5. If they ask about packing, factor in their destination's climate and activities.
+6. If they ask about food or cafes, suggest real, authentic culinary spots near their hotel or sights.
+7. Provide 2-3 short, highly relevant follow-up suggestion chips that the user can ask next."""
 
 COPILOT_USER_PROMPT = """Traveler's Message:
 "{message}"
@@ -47,6 +52,17 @@ class CopilotService:
             structured_llm = llm.with_structured_output(LLMCopilotOutput)
 
             activities_str = ", ".join(req.activities_summary[:8]) if req.activities_summary else "Key local sightseeing stops"
+
+            # Query Destination Vector DB for grounded knowledge
+            rag_chunks = vector_db_service.query(
+                destination=req.destination,
+                query_text=req.message,
+                top_k=2
+            )
+            if rag_chunks:
+                rag_knowledge = "\n".join([f"- [{c.category.upper()}] {c.title}: {c.text}" for c in rag_chunks])
+            else:
+                rag_knowledge = "Standard verified destination advisories apply."
 
             prompt = ChatPromptTemplate.from_messages([
                 ("system", COPILOT_SYSTEM_PROMPT),
@@ -66,6 +82,7 @@ class CopilotService:
                 "weather_summary": req.weather_summary or "Pleasant traveling conditions",
                 "trip_summary": req.trip_summary or "Curated leisure journey",
                 "activities_text": activities_str,
+                "rag_knowledge": rag_knowledge,
                 "message": req.message
             })
 

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TripMind AI: Complete System Architecture, AI Models & Feature Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Fira+Code:wght@400;600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.65;
+      color: #1F2937;
+      background: #F9FAFB;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      padding: 60px 80px;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+      border: 1px solid #E5E7EB;
+    }
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #1B4332;
+    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.4rem; text-align: center; }
+    .subtitle { text-align: center; color: #4B5563; font-size: 1.1rem; margin-bottom: 0.5rem; font-style: italic; }
+    .meta { text-align: center; color: #6B7280; font-size: 0.85rem; margin-bottom: 2rem; }
+    hr { border: 0; height: 1px; background: #E5E7EB; margin: 2rem 0; }
+    h2 { font-size: 1.5rem; margin-top: 2.2rem; border-bottom: 2px solid #E5E7EB; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: #047857; margin-top: 1.4rem; }
+    p, li { font-size: 0.95rem; color: #374151; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+    th, td { border: 1px solid #E5E7EB; padding: 10px 14px; text-align: left; }
+    th { background: #F3F4F6; color: #111827; font-weight: 700; }
+    blockquote {
+      background: #F0FDF4;
+      border-left: 4px solid #10B981;
+      padding: 12px 18px;
+      border-radius: 0 12px 12px 0;
+      color: #065F46;
+      margin: 1.2rem 0;
+      font-style: italic;
+    }
+    code { font-family: 'Fira Code', monospace; background: #F3F4F6; padding: 2px 6px; border-radius: 6px; font-size: 0.85em; color: #B91C1C; }
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1B4332;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 9999px;
+      box-shadow: 0 8px 24px rgba(27,67,50,0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .print-btn:hover { background: #2D6A4F; transform: scale(1.05); }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; border: none; padding: 0; }
+      .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
+  <div class="container">
+    <h1>TripMind AI: Complete System Architecture, AI Models & Feature Guide</h1>
+    <div class="subtitle">Comprehensive Technical Documentation & Academic Viva Defense Reference</div>
+    <div class="meta">Author: <strong>Omkar Narsale</strong> | Department of Information Technology, Savitribai Phule Pune University | October 2026</div>
+    <hr>
+<h1>🌍 TripMind AI: Complete System Architecture, AI Models & Feature Guide</h1>
+<p><strong>Lead Developer & System Architect</strong>: Omkar Narsale</p>
+<p><strong>Academic Domain</strong>: Autonomous Multi-Agent AI Systems, Geospatial Information Systems (GIS), Multimodal Vision & Vector RAG</p>
+<p><strong>Institution</strong>: Department of Information Technology</p>
+<p><strong>Date of Submission</strong>: October 2026</p>
+<hr>
+<h2>📑 Executive Summary</h2>
+<p>Modern travel planning suffers from two critical flaws:</p>
+<p>1. <strong>Commercial Online Travel Agencies (OTAs)</strong> provide fragmented, advertising-biased listings that force users into hours of manual itinerary compilation.</p>
+<p>2. <strong>Ungrounded Large Language Models (LLMs)</strong> frequently hallucinate non-existent hotels, invent fictitious GPS coordinates, and fabricate climatic temperatures.</p>
+<p><strong>TripMind AI</strong> resolves these limitations by creating a <strong>deterministic, multi-agent autonomous travel planning engine and real-time digital concierge</strong>. It marries <strong>LangGraph agentic state machines</strong>, <strong>Groq Language Processing Unit (LPU) inference</strong>, <strong>3-tier data grounding (OpenStreetMap & Open-Meteo)</strong>, <strong>Vector Database (RAG) retrieval</strong>, <strong>OSRM turn-by-turn road routing</strong>, and <strong>Multimodal Vision document scanning</strong> into a unified luxury travel platform.</p>
+<hr>
+<h2>🏛️ Master Architecture & Technology Stack</h2>
+<table><thead><tr>
+<th>Component / Layer</th>
+<th>Technology / Model / API</th>
+<th>Hardware / Hosting</th>
+<th>Primary Function</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Agentic Workflow Engine</strong></td>
+<td><strong>LangGraph StateGraph</strong></td>
+<td>Python 3.13 Backend</td>
+<td>Acyclic task decomposition, dependency graph validation (DAG), and state machine orchestration.</td>
+</tr>
+<tr>
+<td><strong>Core Fast LLM Engine</strong></td>
+<td><strong>openai/gpt-oss-120b</strong> & <strong>llama-3.3-70b-versatile</strong></td>
+<td>Groq Cloud LPU Hardware</td>
+<td>Sub-second travel requirement analysis, structured profile extraction, and itinerary synthesis.</td>
+</tr>
+<tr>
+<td><strong>Multimodal Vision Model</strong></td>
+<td><strong>qwen/qwen3.8-27b Vision</strong></td>
+<td>Groq Cloud LPU Hardware</td>
+<td>Visual OCR and parameter extraction from uploaded flight tickets, hotel vouchers, and boarding passes.</td>
+</tr>
+<tr>
+<td><strong>Vector Database & RAG</strong></td>
+<td><strong>TF-IDF n-grams + Cosine Similarity Vector Store</strong></td>
+<td>Python Native & In-Memory / Disk</td>
+<td>Grounded retrieval of safety advisories, transit rules, scam warnings, and visa regulations.</td>
+</tr>
+<tr>
+<td><strong>Turn-by-Turn Road Routing</strong></td>
+<td><strong>OSRM (Open Source Routing Machine) API</strong></td>
+<td>OpenStreetMap Foundation</td>
+<td>Exact road geometry polyline calculation, road distance, duration, and driving/walking maneuvers.</td>
+</tr>
+<tr>
+<td><strong>Interactive Map Canvas</strong></td>
+<td><strong>Leaflet.js + OpenStreetMap Tiles</strong></td>
+<td>Frontend Client-Side</td>
+<td>Real-time map rendering, custom SVG marker pins with hover tooltips, and animated polyline overlay.</td>
+</tr>
+<tr>
+<td><strong>Live Weather Intelligence</strong></td>
+<td><strong>Open-Meteo Meteorological API</strong></td>
+<td>Open-Meteo REST API</td>
+<td>16-day numerical weather forecast horizon, temperature extremes, and precipitation probabilities.</td>
+</tr>
+<tr>
+<td><strong>Geospatial POI & Lodging</strong></td>
+<td><strong>Overpass QL & Nominatim API</strong></td>
+<td>OpenStreetMap Foundation</td>
+<td>Verified accommodation, attraction, and authentic dining discovery with live coordinates.</td>
+</tr>
+<tr>
+<td><strong>Spatial Route Optimizer</strong></td>
+<td><strong>Haversine Great-Circle Clustering</strong></td>
+<td>Custom Python Algorithm</td>
+<td>Clusters attractions into walkable and vehicular geographic hubs, eliminating backtracking.</td>
+</tr>
+<tr>
+<td><strong>Persistence Database</strong></td>
+<td><strong>Supabase PostgreSQL & JSONB Snapshots</strong></td>
+<td>Supabase Cloud Database</td>
+<td>Cloud storage of user trip requests, weather metrics, stays, routes, and day-by-day itineraries.</td>
+</tr>
+<tr>
+<td><strong>Backend Framework</strong></td>
+<td><strong>FastAPI + Uvicorn + Pydantic v2</strong></td>
+<td>Python 3.13 Async Server</td>
+<td>High-performance asynchronous REST API with strict typed data validation.</td>
+</tr>
+<tr>
+<td><strong>Frontend UI / UX</strong></td>
+<td><strong>React 18 + Vite + Tailwind CSS</strong></td>
+<td>Single Page Application</td>
+<td>Modern luxury editorial aesthetic, dark mode maps, and micro-animations.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔬 Feature-by-Feature Deep Dive: How Everything Works</h2>
+<h3>Feature 1: Autonomous Agentic Planning & Task Decomposition (LangGraph)</h3>
+<ul>
+<li><strong>What Model It Uses</strong>: `openai/gpt-oss-120b` / `llama-3.3-70b-versatile` via <strong>LangGraph StateGraph</strong>.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Accepts the user's high-level goal (e.g., *"5-day relaxed family trip to Jaipur with kids and elderly parents on a $1200 budget"*).</p>
+<p>2. The agent decomposes this complex request into a <strong>Directed Acyclic Graph (DAG)</strong> of discrete subtasks (`weather`, `accommodation`, `attraction`, `transportation`, `food`, `itinerary`).</p>
+<p>3. Validates the dependencies so tasks execute in strict chronological sequence (e.g., attractions and lodging must be chosen before transit routes can be calculated).</p>
+<p>4. Sequentially triggers real-world tool APIs and updates the shared `AgentState`.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/agents/planner_agent.py` and `backend/app/prompts/planner_prompt.py`.</li>
+</ul>
+<hr>
+<h3>Feature 2: Natural Language Requirement & Constraint Extraction</h3>
+<ul>
+<li><strong>What Model It Uses</strong>: Groq LLM with <strong>Few-Shot System Prompting</strong> and <strong>Pydantic Structured Output</strong>.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Takes raw natural-language instructions (e.g., *"avoid crowded clubs, prefer peaceful heritage hotels, love spicy local curries, minimal walking"*).</p>
+<p>2. Parses explicit preferences vs reasonable inferences.</p>
+<p>3. Employs defensive security wrappers: `<USER_INPUT>` tags isolate the text against prompt injection attacks.</p>
+<p>4. Outputs typed fields: `travel_mood`, `pace`, `food_preferences`, `avoided_activities`, and `traveler_context`.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/preference_analyzer.py` and `backend/app/prompts/preference_extraction_prompt.py`.</li>
+</ul>
+<hr>
+<h3>Feature 3: Real-Time Meteorological Grounding & Dynamic Packing</h3>
+<ul>
+<li><strong>What API / Model It Uses</strong>: <strong>Open-Meteo API</strong> + Groq LLM Packing Service.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Takes destination coordinates and travel dates.</p>
+<p>2. If the trip is within 16 days, it retrieves exact numerical daily maximum/minimum temperatures, rain probabilities, and weather conditions.</p>
+<p>3. <strong>Truthfulness Guard</strong>: If the trip is beyond 16 days, it refuses to fabricate exact daily temperatures, switching to historical regional averages.</p>
+<p>4. Generates an itemized packing checklist (rain gear, light cottons, thermal layers, footwear) categorized into essentials.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/weather_service.py` and `backend/app/services/packing_service.py`.</li>
+</ul>
+<hr>
+<h3>Feature 4: 3-Tier Grounded Accommodations Discovery & Suitability Scoring</h3>
+<ul>
+<li><strong>What Data / Model It Uses</strong>: <strong>OpenStreetMap Overpass QL</strong> + <strong>Nominatim Geocoding</strong> + Groq LLM Fallback.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Queries real OSM nodes tagged `tourism=hotel`, `guest_house`, or `resort` around the destination centroid.</p>
+<p>2. Ranks accommodations based on budget match, proximity to city core, and amenities.</p>
+<p>3. Computes a suitability score and generates human-readable selection rationale.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/hotel_service.py` and `backend/app/services/hotel_ranker.py`.</li>
+</ul>
+<hr>
+<h3>Feature 5: Verified Sights & Preference-Aware Attraction Discovery</h3>
+<ul>
+<li><strong>What Data / Model It Uses</strong>: <strong>OpenStreetMap Overpass QL</strong> (`tourism=attraction`, `historic=monument`, `museum`).</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Fetches authentic points of interest (POIs) with real latitude and longitude coordinates.</p>
+<p>2. Ranks venues by matching traveler interests (cultural, adventure, nature, historical).</p>
+<p>3. <strong>Weather Adaptive</strong>: If the weather tool indicates high rain probabilities, the system automatically elevates indoor cultural museums over open-air hilltop forts.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/places_service.py` and `backend/app/services/attraction_ranker.py`.</li>
+</ul>
+<hr>
+<h3>Feature 6: Authentic Local Culinary & Dining Intelligence</h3>
+<ul>
+<li><strong>What Data / Model It Uses</strong>: <strong>OpenStreetMap Overpass API</strong> (`amenity=restaurant`, `amenity=cafe`).</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Identifies genuine restaurants, heritage thali halls, and cafes located near selected attractions.</p>
+<p>2. Tags each venue with cuisine types (Rajasthani, Goan Seafood, French Bakery, Halal, Pure Vegetarian).</p>
+<p>3. Calculates distance from the traveler's anchor hotel.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/food_service.py`.</li>
+</ul>
+<hr>
+<h3>Feature 7: Spatial Route Clustering & Haversine Distance Optimizer</h3>
+<ul>
+<li><strong>What Algorithm It Uses</strong>: <strong>Haversine Great-Circle Distance Metric</strong> + Centroid Spatial Clustering.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Computes great-circle distances between all discovered attractions:</p>
+<p>$$d = 2r \arcsin \left(\sqrt{\sin^2\left(\frac{\Delta\phi}{2}\right) + \cos\phi_1\cos\phi_2\sin^2\left(\frac{\Delta\lambda}{2}\right)}\right)$$</p>
+<p>2. Partitions venues into tight geographic hubs (e.g. Amber Fort Hub vs Walled City Hub).</p>
+<p>3. Recommends transit modes (walk for < 1.2 km, auto-rickshaw/taxi for 1.2–8 km, private vehicle for > 8 km).</p>
+<p>4. Completely eliminates urban backtracking.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/transportation_service.py`.</li>
+</ul>
+<hr>
+<h3>Feature 8: Chronological Day-by-Day Itinerary Engine</h3>
+<ul>
+<li><strong>What It Uses</strong>: Algorithmic Daily Activity Sequencer.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Schedules morning, afternoon, and evening activity blocks with realistic time buffers.</p>
+<p>2. Integrates authentic dining slots for lunch and dinner near the scheduled attractions.</p>
+<p>3. Accounts for traveler dynamics (e.g., generous afternoon rest periods for seniors and children).</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/itinerary_service.py`.</li>
+</ul>
+<hr>
+<h3>Feature 9: Turn-by-Turn Live Road Routing & Interactive Leaflet Navigation</h3>
+<ul>
+<li><strong>What API / Engine It Uses</strong>: <strong>Leaflet.js</strong> + <strong>OpenStreetMap Tile Server</strong> + <strong>OSRM (Open Source Routing Machine) API</strong>.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Extracts sequential waypoints for each day (Anchor Hotel $\rightarrow$ Morning Attraction $\rightarrow$ Lunch Venue $\rightarrow$ Afternoon Sight $\rightarrow$ Evening Return).</p>
+<p>2. Calls OSRM API (`/route/v1/{driving|walking}`) to retrieve the exact street road geometry.</p>
+<p>3. Renders a glowing road polyline on the Leaflet map tracing the real street path.</p>
+<p>4. Opens the <strong>Turn-by-Turn Route Guidance Drawer</strong> displaying total road distance in km, travel duration in minutes, and step-by-step turn maneuvers.</p>
+<p>5. <strong>Instant Hover Tooltips</strong>: Moving the mouse over any marker on the map instantly displays a floating badge with the place name and category without needing to click!</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/routing_service.py` and `frontend/src/components/results/MapSection.jsx`.</li>
+</ul>
+<hr>
+<h3>Feature 10: Destination Knowledge Base Vector Database & RAG</h3>
+<ul>
+<li><strong>What Algorithm / Engine It Uses</strong>: <strong>TF-IDF Sublinear n-grams + Cosine Similarity Vector Store</strong>.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. <strong>Document Ingestion</strong>: Parses curated destination guides (`goa.md`, `jaipur.md`, `paris.md`, `tokyo.md`, `dubai.md`) into semantic chunks covering Safety & Scams, Transit Rules, Visa Regulations, and Cultural Etiquette.</p>
+<p>2. <strong>Vector Space Model</strong>: Generates normalized vector embeddings for each chunk and maintains an index manifest (`index_manifest.json`).</p>
+<p>3. <strong>Cosine Similarity Search</strong>: When a traveler asks a question, the engine calculates:</p>
+<p>$$\text{Cosine Similarity}(\vec{q}, \vec{d}) = \frac{\vec{q} \cdot \vec{d}}{\|\vec{q}\| \|\vec{d}\|}$$</p>
+<p>4. <strong>Chatbot Grounding</strong>: Injects retrieved knowledge chunks directly into the floating <strong>Trip Co-Pilot concierge drawer</strong>, providing unhallucinated emergency numbers, police booth locations, and taxi rules!</p>
+<p>5. <strong>Interactive UI Explorer</strong>: A dedicated panel on the Map tab allows testing vector similarity queries with real-time match scores.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/vector_db_service.py` and `backend/app/services/copilot_service.py`.</li>
+</ul>
+<hr>
+<h3>Feature 11: Multimodal AI Ticket & Travel Document Scanner</h3>
+<ul>
+<li><strong>What Model It Uses</strong>: <strong>qwen/qwen3.8-27b Multimodal Vision Model</strong> on Groq Cloud LPU.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Users drag-and-drop or upload an image of a flight ticket, boarding pass, or hotel booking voucher (PNG/JPG/WEBP).</p>
+<p>2. The vision model analyzes the visual layout and text in parallel on Groq LPU hardware.</p>
+<p>3. Extracts typed parameters: Origin, Destination, Normalized Dates (`YYYY-MM-DD`), Passenger Count, PNR Reference, Carrier/Hotel Name, and Amenities.</p>
+<p>4. <strong>⚡ Auto-Fill Button</strong>: Injects all extracted data directly into the trip planning form with zero manual typing.</p>
+<p>5. <strong>One-Click Viva Demos</strong>: Built-in buttons for *IndiGo Flight (Jaipur)* and *Taj Resort Voucher (Goa)* allow instant 1-second demonstration during oral exams!</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/vision_service.py` and `frontend/src/components/TicketScannerModal.jsx`.</li>
+</ul>
+<hr>
+<h3>Feature 12: Calendar Sync (RFC-5545 `.ics`) & Luxury Print Brochure</h3>
+<ul>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. <strong>Universal `.ics` Export</strong>: Generates an RFC-5545 calendar file compatible with Apple Calendar, Google Calendar, and Microsoft Outlook.</p>
+<p>2. <strong>Direct Google Calendar Link</strong>: Adds `+ Cal` quick-add links for individual scheduled activities.</p>
+<p>3. <strong>Editorial Print PDF</strong>: Features a dedicated `@media print` layout providing an offline travel brochure with daily schedules and emergency contacts.</p>
+<ul>
+<li><strong>Code Location</strong>: `frontend/src/utils/calendar.js` and `frontend/src/components/results/PrintBrochureView.jsx`.</li>
+</ul>
+<hr>
+<h3>Feature 13: Supabase Cloud Database Session Persistence</h3>
+<ul>
+<li><strong>What It Uses</strong>: <strong>Supabase PostgreSQL</strong> with JSONB Relational Snapshots.</li>
+<li><strong>How It Works</strong>:</li>
+</ul>
+<p>1. Automatically persists planning sessions, user requests, enhanced profiles, and all generated intelligence artifacts (weather, hotels, places, transit, itinerary).</p>
+<p>2. Allows users to retrieve past trips instantly via the "Saved Trips" modal.</p>
+<ul>
+<li><strong>Code Location</strong>: `backend/app/services/supabase_service.py`.</li>
+</ul>
+<hr>
+<h2>🎓 Academic Syllabus & Learning Outcomes Alignment</h2>
+<table><thead><tr>
+<th>Sr. No.</th>
+<th>Lab Learning Outcome</th>
+<th>Relevant CO</th>
+<th>Implementation in TripMind AI</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Manipulate LLM hyperparameters to analyze text generation variance</td>
+<td><strong>CO1</strong></td>
+<td>Configured low-temperature deterministic inference (`temperature=0.2`) for factual stability in `llm_service.py`.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Design system prompts to enforce structured data schemas</td>
+<td><strong>CO1</strong></td>
+<td>System prompts in `preference_extraction_prompt.py` and `planner_prompt.py` enforcing typed Pydantic models.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Prompting frameworks (Few-Shot) for reasoning workflows</td>
+<td><strong>CO2</strong></td>
+<td>Few-Shot reference examples in `preference_extraction_prompt.py` demonstrating user instruction extraction.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Develop cognitive prompt templates for logical workflows</td>
+<td><strong>CO2</strong></td>
+<td>Multi-step LangGraph planning workflow decomposing goals into dependency-ordered execution graphs.</td>
+</tr>
+<tr>
+<td><strong>5 & 6</strong></td>
+<td>Generate vector embeddings & build vector database query interface</td>
+<td><strong>CO3</strong></td>
+<td>`vector_db_service.py` implementing TF-IDF vector embeddings, cosine similarity search, and RAG UI explorer.</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Function calling / workflows triggering external APIs</td>
+<td><strong>CO3, CO6</strong></td>
+<td>Dynamic triggering of Open-Meteo, OpenStreetMap Overpass, Nominatim, and OSRM APIs in `planner_agent.py`.</td>
+</tr>
+<tr>
+<td><strong>8 & 9</strong></td>
+<td>Mitigate hallucinations & deploy defensive prompt guardrails</td>
+<td><strong>CO4</strong></td>
+<td>Grounding with real GIS/weather data, anti-hallucination rules, and `<USER_INPUT>` prompt isolation wrappers.</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Map logical workflows using vision-language models</td>
+<td><strong>CO5</strong></td>
+<td>`vision_service.py` using `qwen/qwen3.8-27b` multimodal vision model to scan and extract travel documents.</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>Multi-step autonomous agent script for task execution (Mini-Project)</td>
+<td><strong>CO6</strong></td>
+<td><strong>Core of TripMind AI</strong>: LangGraph autonomous planning agent breaking high-level travel goals into subtasks.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎙️ Viva / Oral Examination Q&A Defense Guide</h2>
+<h3>Q1: "Why did you use LangGraph instead of a simple prompt to ChatGPT?"</h3>
+<blockquote>**Answer**: *"A simple LLM prompt suffers from massive hallucinations—it creates fake hotels, invents coordinates, and produces impossible transit schedules. LangGraph allows us to build a deterministic State Machine with a Directed Acyclic Graph (DAG). It breaks down the trip goal into discrete tasks (weather, stays, sights, routes), validates their dependencies, and forces the system to call verified external APIs before synthesizing the itinerary."*</blockquote>
+<h3>Q2: "What AI models are being used in this project?"</h3>
+<blockquote>**Answer**: *"We utilize two primary models hosted on Groq Cloud LPU hardware for ultra-fast, sub-second inference:</blockquote>
+<blockquote>1. `llama-3.3-70b-versatile` / `openai/gpt-oss-120b` for agentic planning, preference extraction, and grounded concierge chat.</blockquote>
+<blockquote>2. `qwen/qwen3.8-27b` Multimodal Vision Model for visually scanning travel tickets, boarding passes, and hotel vouchers."*</blockquote>
+<h3>Q3: "How does your RAG (Retrieval-Augmented Generation) work?"</h3>
+<blockquote>**Answer**: *"Our `vector_db_service.py` indexes curated destination guidebooks into semantic chunks. It computes normalized vector embeddings using TF-IDF n-grams and calculates Cosine Similarity against the user's query. When a user asks our AI Co-Pilot about safety, scam warnings, or metro rules, the matched chunks are injected into the LLM prompt, guaranteeing 100% factual answers backed by the vector store."*</blockquote>
+<h3>Q4: "How does the Live Road Routing work on the map?"</h3>
+<blockquote>**Answer**: *"We integrated Leaflet.js with the Open Source Routing Machine (OSRM) API. When a user selects a day in the itinerary, our backend extracts the sequential coordinates (Hotel $\rightarrow$ Morning Sight $\rightarrow$ Lunch $\rightarrow$ Afternoon Sight) and queries OSRM. OSRM returns the exact road network geometry, which we draw as a polyline on the Leaflet map, alongside step-by-step turn maneuvers, road distance in km, and travel time in minutes."*</blockquote>
+<h3>Q5: "How does your system avoid hallucinating temperatures and weather?"</h3>
+<blockquote>**Answer**: *"We strictly query the Open-Meteo meteorological API. If the travel date is within the 16-day numerical forecast horizon, real live weather is used. If the trip is beyond 16 days, our system explicitly informs the user that only seasonal climate averages apply, preventing the LLM from fabricating exact daily temperatures."*</blockquote>
+  </div>
+</body>
+</html>

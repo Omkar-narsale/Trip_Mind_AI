@@ -1,0 +1,355 @@
+{
+  "total_chunks": 49,
+  "destinations": [
+    "tokyo",
+    "paris",
+    "jaipur",
+    "goa",
+    "dubai"
+  ],
+  "chunks": [
+    {
+      "chunk_id": "dubai_0_0",
+      "destination": "dubai",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 1",
+      "text": "- **Emergency Police**: Dial 999. Dubai is ranked among the safest metropolitan cities globally with low violent crime rates."
+    },
+    {
+      "chunk_id": "dubai_0_1",
+      "destination": "dubai",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 2",
+      "text": "- **Ambulance**: Dial 998. Fire Department (Civil Defense): Dial 997. Tourist Security Department Helpline: 800-4888."
+    },
+    {
+      "chunk_id": "dubai_0_2",
+      "destination": "dubai",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 3",
+      "text": "- **Heat & Dehydration Alert**: During summer months (May\u2013September), outdoor temperatures exceed 42\u00b0C with high humidity. Schedule outdoor excursions for early morning (07:00\u201309:30 AM) or after sunset. Carry oral rehydration salts and sunscreen."
+    },
+    {
+      "chunk_id": "dubai_1_0",
+      "destination": "dubai",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 1",
+      "text": "- **Dubai Metro & Nol Cards**: The automated driverless Dubai Metro (Red and Green Lines) spans major business, shopping, and airport corridors. Riders must purchase a rechargeable Nol Card (Silver for regular class, Gold for VIP Gold Class carriages). Eating, drinking water, or chewing gum inside Metro trains or stations incurs a spot fine of AED 100."
+    },
+    {
+      "chunk_id": "dubai_1_1",
+      "destination": "dubai",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 2",
+      "text": "- **Taxis & Careem/Uber**: Taxis operated by Dubai Taxi Corporation (DTC) are metered, clean, and accept international credit cards. Halal-friendly \"Pink Taxis\" driven by female drivers are available for women and families."
+    },
+    {
+      "chunk_id": "dubai_2_0",
+      "destination": "dubai",
+      "category": "visa",
+      "title": "Visa & Entry Regulations - Item 1",
+      "text": "- **Visa on Arrival**: Citizens of GCC countries, the European Union, the United States, the UK, Australia, and select others receive free 30-day or 90-day Visas on Arrival at Dubai International Airport (DXB). Indian passport holders with valid US, UK, or Schengen visas can obtain a 14-day Visa on Arrival."
+    },
+    {
+      "chunk_id": "dubai_2_1",
+      "destination": "dubai",
+      "category": "visa",
+      "title": "Visa & Entry Regulations - Item 2",
+      "text": "- **Medication Restrictions**: The UAE Ministry of Health strictly controls certain prescription pharmaceuticals (such as codeine, tramadol, and psychotropic drugs). Always check the official UAE Ministry of Health restricted medication list and carry a physician's prescription."
+    },
+    {
+      "chunk_id": "dubai_3_0",
+      "destination": "dubai",
+      "category": "culture",
+      "title": "Cultural Etiquette & Local Laws - Item 1",
+      "text": "- **Public Decorum**: Dress modestly in public areas like shopping malls, traditional souks, and government buildings, ensuring shoulders and knees are covered. Beachwear is strictly confined to beach clubs and hotel pools."
+    },
+    {
+      "chunk_id": "dubai_3_1",
+      "destination": "dubai",
+      "category": "culture",
+      "title": "Cultural Etiquette & Local Laws - Item 2",
+      "text": "- **Photography of Government Facilities**: Photographing military buildings, government ministries, airports, or individuals without their express consent is strictly prohibited by UAE law."
+    },
+    {
+      "chunk_id": "goa_0_0",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 1",
+      "text": "- **Emergency Police**: Dial 112 (Central Police Control Room) or 100."
+    },
+    {
+      "chunk_id": "goa_0_1",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 2",
+      "text": "- **Medical Emergency**: Dial 108 for emergency ambulance services in Goa."
+    },
+    {
+      "chunk_id": "goa_0_2",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 3",
+      "text": "- **Beach Safety & Lifeguards**: Drishti Marine manages certified lifeguards along active beaches (Calangute, Baga, Candolim, Colva, Palolem). Swim only between the designated red-and-yellow flags. Never swim in the sea after sunset or under red flags (monsoon / rough sea hazard)."
+    },
+    {
+      "chunk_id": "goa_0_3",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 4",
+      "text": "- **Public Drinking Ban**: Drinking alcohol on public beaches and roads is strictly prohibited by Goa Police under the Tourist Places Protection Act, carrying spot fines up to \u20b92,000 or \u20b910,000 for groups. Drink only within licensed beach shacks and bars."
+    },
+    {
+      "chunk_id": "goa_1_0",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Local Transit & Mobility Rules - Item 1",
+      "text": "- **Motorcycle Taxis (Pilots)**: Goa is famous for licensed motorcycle taxis locally called \"Pilots\" (bearing yellow registration plates). They are ideal for quick, solo short-distance trips between beaches. Agree on the fare before boarding."
+    },
+    {
+      "chunk_id": "goa_1_1",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Local Transit & Mobility Rules - Item 2",
+      "text": "- **Car & Scooter Rentals**: Self-drive two-wheelers and hatchbacks are ubiquitous. Always wear a BIS-certified helmet; Goa traffic police strictly fine unhelmeted riders. Always carry an original driving license and rental agreement."
+    },
+    {
+      "chunk_id": "goa_1_2",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Local Transit & Mobility Rules - Item 3",
+      "text": "- **Taxi Fares & GoaMiles**: Traditional roadside tourist taxis do not use digital meters; agree on the fixed fare upfront or use the government-backed GoaMiles app to avoid overcharging. Pre-paid taxi counters operate at Dabolim Airport (GOI) and Manohar International Airport Mopa (GOX)."
+    },
+    {
+      "chunk_id": "goa_2_0",
+      "destination": "goa",
+      "category": "visa",
+      "title": "Visa, Entry & Identification - Item 1",
+      "text": "- **Domestic Travelers**: Require a valid government photo ID (Aadhaar, Voter ID, Passport, or Driving License) for hotel check-ins and airport security."
+    },
+    {
+      "chunk_id": "goa_2_1",
+      "destination": "goa",
+      "category": "visa",
+      "title": "Visa, Entry & Identification - Item 2",
+      "text": "- **International Visitors**: Must possess a valid Indian Visa or approved Indian e-Tourist Visa (30-day, 1-year, or 5-year duration) along with a passport valid for at least 6 months with 2 blank pages."
+    },
+    {
+      "chunk_id": "goa_3_0",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Cultural Etiquette & Local Laws - Item 1",
+      "text": "- **Beachwear Restraint**: Swimsuits and bikinis are standard on the sand and within private resort pools, but avoid walking through village markets, churches, and urban streets in swimwear. Wear modest clothing covering shoulders and knees when visiting Old Goa churches (Basilica of Bom Jesus) or temples (Mangueshi Temple)."
+    },
+    {
+      "chunk_id": "goa_3_1",
+      "destination": "goa",
+      "category": "safety",
+      "title": "Cultural Etiquette & Local Laws - Item 2",
+      "text": "- **Water Sports Verification**: Engage only with government-registered water sports operators offering life jackets and safety briefing before jet skiing, parasailing, or banana rides."
+    },
+    {
+      "chunk_id": "jaipur_0_0",
+      "destination": "jaipur",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 1",
+      "text": "- **Emergency Police**: Dial 112 or 100. Rajasthan Tourist Assistance Police booths are stationed near Hawa Mahal and Amer Fort."
+    },
+    {
+      "chunk_id": "jaipur_0_1",
+      "destination": "jaipur",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 2",
+      "text": "- **Medical Emergency**: Dial 108 for emergency ambulance. Major multi-specialty hospitals include SMS Hospital and Fortis Escorts Jaipur."
+    },
+    {
+      "chunk_id": "jaipur_0_2",
+      "destination": "jaipur",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 3",
+      "text": "- **Street Vendor Scams**: Be cautious of unofficial \"gemstone dealers\" and unsolicited gemstone investment advice in the old bazaar corridors. Purchase certified gemstones only from Rajasthan Small Industries Corporation (Rajasthali) or verified outlets."
+    },
+    {
+      "chunk_id": "jaipur_1_0",
+      "destination": "jaipur",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 1",
+      "text": "- **Jaipur Metro Rail**: The Pink Line connects Mansarovar to Badi Chaupar (directly adjacent to Hawa Mahal and the walled city). Trains operate every 7-10 minutes; contactless smart tokens and QR tickets are available at station counters."
+    },
+    {
+      "chunk_id": "jaipur_1_1",
+      "destination": "jaipur",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 2",
+      "text": "- **Auto-Rickshaws & E-Rickshaws**: E-rickshaws are the most efficient way to navigate the narrow alleys of Johari Bazaar and Tripolia Bazaar. Ensure drivers turn on meters or negotiate a fixed rate prior to boarding."
+    },
+    {
+      "chunk_id": "jaipur_1_2",
+      "destination": "jaipur",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 3",
+      "text": "- **Amer Fort Transport**: To reach Amer Fort hilltop, visitors can take traditional government-regulated elephant rides (operating strictly until 11:30 AM), 4x4 open jeeps from the lower parking plaza, or walk up the cobblestone ramp."
+    },
+    {
+      "chunk_id": "jaipur_2_0",
+      "destination": "jaipur",
+      "category": "visa",
+      "title": "Visa, Entry & Monuments Composite Pass - Item 1",
+      "text": "- **Monument Composite Pass**: The Department of Archaeology and Museums issues a Composite Ticket valid for 2 days covering Amer Fort, Hawa Mahal, Jantar Mantar, Albert Hall Museum, Nahargarh Fort, and Sisodia Rani Garden. Purchasing the composite pass at the first monument saves over 40% and avoids separate queues."
+    },
+    {
+      "chunk_id": "jaipur_2_1",
+      "destination": "jaipur",
+      "category": "visa",
+      "title": "Visa, Entry & Monuments Composite Pass - Item 2",
+      "text": "- **International Visitors**: Indian e-Tourist Visa required. Entry fees for historical monuments differ for domestic and international travelers (carry your passport or passport photocopy)."
+    },
+    {
+      "chunk_id": "jaipur_3_0",
+      "destination": "jaipur",
+      "category": "visa",
+      "title": "Cultural Etiquette & Local Laws - Item 1",
+      "text": "- **Footwear at Sacred Sites**: Remove shoes before stepping onto temple marble courtyards (such as Govind Dev Ji Temple or Birla Mandir). Shoe stalls with safe tokens are provided."
+    },
+    {
+      "chunk_id": "jaipur_3_1",
+      "destination": "jaipur",
+      "category": "visa",
+      "title": "Cultural Etiquette & Local Laws - Item 2",
+      "text": "- **Photography Permissions**: Tripods and professional video cameras require special archaeological permits at heritage sites; smartphone photography is permitted across all primary courtyards."
+    },
+    {
+      "chunk_id": "paris_0_0",
+      "destination": "paris",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 1",
+      "text": "- **Emergency Numbers**: Dial 112 (European emergency unified number) or 17 (French National Police / Gendarmerie) and 15 (SAMU Medical Emergency)."
+    },
+    {
+      "chunk_id": "paris_0_1",
+      "destination": "paris",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 2",
+      "text": "- **Pickpocket Warning Zones**: Be vigilant on Paris M\u00e9tro Line 1, Line 4, around Gare du Nord, Champ de Mars (Eiffel Tower gardens), Sacr\u00e9-C\u0153ur steps in Montmartre, and outside the Louvre pyramid. Keep bags zipped and worn in front in crowded train cars."
+    },
+    {
+      "chunk_id": "paris_0_2",
+      "destination": "paris",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 3",
+      "text": "- **Classic Street Scams**: Ignore street petition clipboard groups, the \"found gold ring\" trick, and the \"three-card monte\" shell games around bridges over the Seine."
+    },
+    {
+      "chunk_id": "paris_1_0",
+      "destination": "paris",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 1",
+      "text": "- **RATP M\u00e9tro & RER Network**: Paris has 16 M\u00e9tro lines and 5 RER commuter express rail lines. Magnetic paper tickets (Ticket t+) have transitioned to digital Navigo Easy smartcards and contactless smartphone validation via \u00cele-de-France Mobilit\u00e9s app."
+    },
+    {
+      "chunk_id": "paris_1_1",
+      "destination": "paris",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 2",
+      "text": "- **Airport Transfers**: RER Line B connects Charles de Gaulle Airport (CDG) directly to central Paris (Ch\u00e2telet-Les Halles / Gare du Nord) in approximately 35 minutes. Official taxis have fixed flat-rate fares (\u20ac56\u2013\u20ac65) to central Right and Left Bank districts."
+    },
+    {
+      "chunk_id": "paris_2_0",
+      "destination": "paris",
+      "category": "visa",
+      "title": "Visa & Schengen Regulations - Item 1",
+      "text": "- **Schengen Visa Requirements**: Non-EU travelers must hold a valid Schengen Visa (or approved ETIAS travel authorization when applicable) and passport with at least 3 months validity beyond the intended departure date."
+    },
+    {
+      "chunk_id": "paris_2_1",
+      "destination": "paris",
+      "category": "visa",
+      "title": "Visa & Schengen Regulations - Item 2",
+      "text": "- **Travel Insurance**: Valid overseas travel health insurance with minimum medical coverage of \u20ac30,000 is legally mandated for Schengen entry."
+    },
+    {
+      "chunk_id": "paris_3_0",
+      "destination": "paris",
+      "category": "safety",
+      "title": "Cultural Etiquette & Dining Norms - Item 1",
+      "text": "- **The \"Bonjour\" Rule**: Always greet shopkeepers, caf\u00e9 staff, and hotel concierges with a courteous *\"Bonjour, Madame/Monsieur\"* before asking a question or ordering. Omitting this is perceived as abrupt and rude."
+    },
+    {
+      "chunk_id": "paris_3_1",
+      "destination": "paris",
+      "category": "safety",
+      "title": "Cultural Etiquette & Dining Norms - Item 2",
+      "text": "- **Tipping & Service Charge**: Service is legally included in French caf\u00e9 and restaurant bills by law (*service compris*, typically 15%). Leaving an additional \u20ac1 to \u20ac3 in small change is customary for attentive hospitality, but not compulsory."
+    },
+    {
+      "chunk_id": "tokyo_0_0",
+      "destination": "tokyo",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 1",
+      "text": "- **Emergency Police**: Dial 110. Japan's neighborhood police boxes (*Koban*) are located at nearly every major intersection and train station to assist with directions, lost items, and reporting emergencies."
+    },
+    {
+      "chunk_id": "tokyo_0_1",
+      "destination": "tokyo",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 2",
+      "text": "- **Fire & Ambulance**: Dial 119."
+    },
+    {
+      "chunk_id": "tokyo_0_2",
+      "destination": "tokyo",
+      "category": "safety",
+      "title": "Safety & Emergency Protocols - Item 3",
+      "text": "- **Earthquake Preparedness**: Tokyo buildings are constructed to stringent seismic codes. During seismic tremors, protect your head under sturdy furniture, stay away from glass windows, and wait until shaking subsides before evacuating."
+    },
+    {
+      "chunk_id": "tokyo_1_0",
+      "destination": "tokyo",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 1",
+      "text": "- **Suica & Pasmo IC Cards**: Contactless IC smartcards (digital Suica/Pasmo on Apple Wallet or Welcome Suica cards) are essential for tap-and-go travel across JR East lines, Tokyo Metro, Toei Subway, and convenience store payments."
+    },
+    {
+      "chunk_id": "tokyo_1_1",
+      "destination": "tokyo",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 2",
+      "text": "- **Train Etiquette**: Keep smartphones on silent mode (*manner mode*) aboard subway trains. Refrain from speaking on voice phone calls. Maintain quiet voices and queue precisely on marked platform lines before boarding."
+    },
+    {
+      "chunk_id": "tokyo_1_2",
+      "destination": "tokyo",
+      "category": "transit",
+      "title": "Local Transit & Mobility Rules - Item 3",
+      "text": "- **Last Train Curfew**: Tokyo's subway and rail lines do not run 24 hours. The last trains typically depart between midnight (00:00) and 00:45 AM. After this hour, travelers must rely on taxis or wait until 05:00 AM."
+    },
+    {
+      "chunk_id": "tokyo_2_0",
+      "destination": "tokyo",
+      "category": "visa",
+      "title": "Visa & Entry Regulations - Item 1",
+      "text": "- **Visit Japan Web**: Travelers should pre-register customs and immigration declarations online via the official Visit Japan Web portal to generate fast-track QR codes prior to landing at Narita (NRT) or Haneda (HND)."
+    },
+    {
+      "chunk_id": "tokyo_2_1",
+      "destination": "tokyo",
+      "category": "visa",
+      "title": "Visa & Entry Regulations - Item 2",
+      "text": "- **Tourist Visa Exemption**: Over 70 nationalities enjoy visa exemptions for short tourism stays up to 90 days. Other passport holders must obtain a single-entry or double-entry eVisa."
+    },
+    {
+      "chunk_id": "tokyo_3_0",
+      "destination": "tokyo",
+      "category": "culture",
+      "title": "Cultural Etiquette & Local Laws - Item 1",
+      "text": "- **Trash Disposal**: Public trash cans are rare on Tokyo streets (removed following historical security protocols). Always carry a small bag to carry personal waste back to your hotel or dispose of bottles in recycling bins beside vending machines."
+    },
+    {
+      "chunk_id": "tokyo_3_1",
+      "destination": "tokyo",
+      "category": "culture",
+      "title": "Cultural Etiquette & Local Laws - Item 2",
+      "text": "- **Tipping Norm**: Tipping is NOT practiced in Japan and can cause confusion or embarrassment. Exceptional service is viewed as the baseline standard included in the bill."
+    }
+  ]
+}
