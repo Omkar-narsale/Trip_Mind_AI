@@ -1,11 +1,11 @@
 {
   "total_chunks": 49,
   "destinations": [
-    "tokyo",
-    "paris",
     "jaipur",
+    "dubai",
     "goa",
-    "dubai"
+    "paris",
+    "tokyo"
   ],
   "chunks": [
     {
